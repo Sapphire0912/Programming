@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Lab 3: Conditionals</title>
+</head>
+<body>
+    <script type="text/javascript">
+        
+        var age = 35;
+        if(age<18)
+        {
+            document.write("You're just a pup!");
+        } else if(age<30)
+        {
+            document.write("Welcome to young adulthood... Have fun now (while you can)");
+        } else if(age<40)
+        {
+            document.write("It's time to be getting serious about career and family.");
+        }else if(age<50)
+        {
+            document.write("Time to start thinking about retirement. Make sure you're saving.");
+        }else if(age<60)
+        {
+            document.write("Enjoy your life now! You've done well.");
+        } else
+        {
+            document.write("60 is the new 40. Do something exciting!");
+        }
+        
+        document.write("<br/>");
+        
+        var discountCode = prompt("Please enter A, B, C, or D for the discount code: ");
+        var discountRate;
+        var amountOfSale = 27.95;
+        
+        switch(discountCode)
+        {
+            case 'A':
+            case 'a':
+                discountRate = 0.325;
+                break;
+            case 'B':
+            case 'b':
+                discountRate = .05;
+                break;
+            case 'C':
+            case 'c':
+                discountRate = .075;
+                break;
+            case 'D':
+            case 'd':
+                discountRate = 0.10;
+                break;
+            default:
+                document.write("Code not recognized.");
+        }
+        if (!isNaN (discountRate))
+        {
+        document.write("Total after discount: $" + (amountOfSale - (amountOfSale*discountRate)));
+        }
+    </script>
+</body>
+</html>

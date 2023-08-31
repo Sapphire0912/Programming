@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Lab 8</title>
+</head>
+<body>
+    <script>
+        var poem = "With Rue My Heart Is Laden<br/>";
+        poem += "For Golden Friends I Had<br/>";
+        poem += "For Many a Rose‐Lipped Maiden<br/>";
+        poem += "And Many a Light‐Foot Lad<br/>";
+        poem += "<br/>By Brooks To Broad For Leaping<br/>";
+        poem += "The Light Foot Boys are Laid<br/>";
+        poem += "The Rose‐Lipped Girls are Sleeping<br/>";
+        poem += "In Fields Where Roses Fade<br/>";
+        
+        document.write(poem+"**************************************<br/>");
+        var newPoem = poem.replace(/[aeiouAEIOU]/g, "X");
+        document.write(newPoem);
+        document.write("**************************************<br/>");
+        var sports = "tennis,ice hockey,baseball,basketball,football,soccer,bowling";
+        var sportsArray = sports.split(",");
+        sportsArray.sort();
+        for(var i=0;i<sportsArray.length;i++)
+        {
+            document.write(sportsArray[i]+"<br/>");
+        }
+        
+    </script>
+</body>
+</html>

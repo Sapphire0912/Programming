@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Lab 7</title>
+    <script>
+        function outputArray(theArray)
+        {
+            for(var x=0;x<theArray.length;x++)
+            {
+               document.write(theArray[x]+"<br/>");
+            }
+        }
+    </script>
+</head>
+<body>
+    <script>
+        var placesToVisit = new Array ("rome","spain","dominican republic","las vegas","las angeles");
+        
+        placesToVisit.push("Boise");
+        outputArray(placesToVisit);
+        
+        document.write("*****"+"<br/>");
+        
+        placesToVisit.splice(0,2);
+        outputArray(placesToVisit);
+        document.write("*****"+"<br/>");
+        
+        placesToVisit.sort();
+        outputArray(placesToVisit);
+        
+        
+    </script>
+</body>
+</html>

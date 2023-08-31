@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<script language="javascript" type="text/javascript">
+function validFirst()
+{
+    //alert("In validFirst()");
+    var firstTextBoxContent = document.getElementById("first").value;
+    if(firstTextBoxContent != "" && firstTextBoxContent != null)
+    {
+        document.getElementById("firstError").innerHTML= "";
+        document.getElementById("first").style.backgroundColor= "white";
+        if (firstTextBoxContent.length <3)
+        {
+            document.getElementById("firstError").innerHTML= "Response too short";                
+        }
+    } else
+    {
+        document.getElementById("firstError").innerHTML= "Required Field"
+        document.getElementById("first").style.backgroundColor= "red";
+    }
+    
+}
+function validLast()
+{
+    var lastTextBoxContent = document.getElementById("last").value;
+    if(lastTextBoxContent != "" && lastTextBoxContent != null)
+    {
+        document.getElementById("lastError").innerHTML= "";
+        document.getElementById("last").style.backgroundColor= "white";
+        if (lastTextBoxContent.length <3)
+        {
+            document.getElementById("lastError").innerHTML= "Response too short";                
+        }
+    } else
+    {
+        document.getElementById("lastError").innerHTML= "Required Field"
+        document.getElementById("last").style.backgroundColor= "red";
+    }
+    
+}
+function validEmail()
+{
+    var emailTextBoxContent = document.getElementById("email").value;
+    if(emailTextBoxContent != "" && emailTextBoxContent != null)
+    {
+        document.getElementById("emailError").innerHTML= "";
+        document.getElementById("email").style.backgroundColor= "white";
+        if (emailTextBoxContent.length <3)
+        {
+            document.getElementById("emailError").innerHTML= "Response too short";                
+        }
+    } else
+    {
+        document.getElementById("emailError").innerHTML= "Required Field"
+        document.getElementById("email").style.backgroundColor= "red";
+    }   
+}
+function validPhone()
+{
+    var phoneTextBoxContent = document.getElementById("phone").value;
+    if(phoneTextBoxContent != "" && phoneTextBoxContent != null)
+    {
+        document.getElementById("phoneError").innerHTML= "";
+        document.getElementById("phone").style.backgroundColor= "white";
+        if (phoneTextBoxContent.length <3)
+        {
+            document.getElementById("phoneError").innerHTML= "Response too short";                
+        }
+    } else
+    {
+        document.getElementById("phoneError").innerHTML= "Required Field"
+        document.getElementById("phone").style.backgroundColor= "red";
+    }
+}
+</script>
+<head>
+    <title>Chapter 10 Lab</title>
+</head>
+<body>
+    <table>
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" id="first" onblur="validFirst()"></td>
+                <td><span id="firstError"></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" id="last" onblur="validLast()"></td>
+                <td><span id="lastError"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" id="email" onblur="validEmail()"></td>
+                <td><span id="emailError"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" id="phone" onblur="validPhone()"></td>
+                <td><span id="phoneError"></td>
+            </tr>
+            <tr>
+                <td><input type="submit"/></td>
+                <td></td>
+                <td></td>
+</body>
+</html>

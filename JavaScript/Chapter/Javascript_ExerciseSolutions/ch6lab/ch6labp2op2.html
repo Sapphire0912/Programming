@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>lab 6 option 2</title>
+    <script>
+        function math(event)
+        {
+            var callingButton = event.currentTarget.id;
+            switch(callingButton)
+            {
+                case "addition":
+                    var operand1 = prompt("Number 1: ");
+                    var operand2 = prompt("Number 2: ");
+                    var op1 = parseInt(operand1);
+                    var op2 = parseInt(operand2);
+                    alert(op1+ " + " + op2 + " = " + (op1+op2));
+                    break;
+                case "subtraction":
+                    var operand1 = prompt("Number 1: ");
+                    var operand2 = prompt("Number 2: ");
+                    var op1 = parseInt(operand1);
+                    var op2 = parseInt(operand2);
+                    alert(op1+ " - " + op2 + " = " + (op1-op2));
+                    break;
+                case "multiplication":
+                    var operand1 = prompt("Number 1: ");
+                    var operand2 = prompt("Number 2: ");
+                    var op1 = parseInt(operand1);
+                    var op2 = parseInt(operand2);
+                    alert(op1+ " * " + op2 + " = " + (op1*op2));
+                    break;
+                case "division":
+                    var operand1 = prompt("Number 1: ");
+                    var operand2 = prompt("Number 2: ");
+                    var op1 = parseInt(operand1);
+                    var op2 = parseInt(operand2);
+                    alert(op1+ " / " + op2 + " = " + (op1/op2));
+                    break;
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="Add" onclick="math(event)" id="addition"/>
+    <input type="button" value="Subtract" onclick="math(event)" id="subtraction"/>
+    <input type="button" value ="Multply"  onclick="math(event)" id="multiplication"/>
+    <input type="button" value="Divide" onclick="math(event)" id="division"/><br/><br/>
+</body>
+</html>

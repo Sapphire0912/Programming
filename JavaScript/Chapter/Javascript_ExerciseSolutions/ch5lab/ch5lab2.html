@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Compound interest</title>
+    <script type="text/javascript">
+        function calculate()
+        {
+            
+            var value1 = document.getElementById("intRate").value;
+            var value2 = document.getElementById("principal").value;
+            var value3 = document.getElementById("term").value;
+            var interestRate = (parseFloat(value1)/12);
+            var principal = parseFloat(value2);
+            var term = parseFloat(value3);
+            
+            document.write("<table border='1' cellspacing='0'>");
+            document.write("<tr><th>Month</th><th>Interest Earned</th><th>Total</th></tr>");
+            for(var x=0; x<term; x++)
+            {
+                document.write("<tr><td>"+(x+1)+"</td>");
+                document.write("<td>$" + (principal*interestRate).toFixed(2) +"</td>");
+                document.write("<td>$" + (principal+(interestRate*principal)).toFixed(2) +"</td></tr>");
+                principal = (principal+(interestRate*principal));
+                
+            }
+            document.write("</table>");
+            
+            
+        }
+    </script>
+</head>
+<body>
+    Yearly Interest Rate:<input type="text" id="intRate" /><br/>
+    Principal:<input type="text" id="principal" /><br/>
+    Term (in months): <input type="text" id="term" /><br/>
+    
+    <input type="button" value="Submit" onclick="calculate()" />
+</body>
+</html>

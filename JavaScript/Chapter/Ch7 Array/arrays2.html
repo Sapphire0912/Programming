@@ -1,0 +1,26 @@
+<html lang="en">
+    <head>
+        <title>Arrays 02</title>
+    </head>
+    <body>
+        <script language="javascript" type="text/javascript">
+            var grades = [85, 92, 70, 63, 55, 92, 88, 77, 91, 91];
+            grades.push(100, 63);
+            var poppedOff = grades.pop();
+
+            for (x in grades){
+                document.write("Iteration: " + x + ", ");
+                document.write(grades[x] + "<br>");
+            }
+
+            document.write("PoppedOff: " + poppedOff);
+            
+            grades.sort();
+            for (y in grades){
+                document.write("After sorting: " + y + ", ");
+                document.write(grades[y] + "<br>");
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!-- 有三種方法可以利用 Javascript 新增 HTML 的文字-->
+<html>
+    <head>
+        <title>
+            First Javascript
+        </title>
+        <!-- method 1. -->
+        <script language="javascript" type="text/javascript">
+            function sayBye(){
+                document.write("<br/>Good Bye!");
+            }
+            function sayBandName(){
+                document.write("<br/>Journey rules!");
+            }
+        </script>
+    </head>
+    <body>
+        <!-- method 2. -->
+        <script language="javascript" type="text/javascript">
+            // Output to the browser
+            // <strong></strong> 和 <b></b> 一樣, 將文字粗體
+            document.write("<b>Hello World from Javascript</b>");
+            document.write("<br/>This is my first javascript program!");
+
+            // method 1 executed.
+            sayBandName();
+            sayBye();
+        </script>
+    </body>
+</html>

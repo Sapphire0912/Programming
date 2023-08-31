@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables</title>
+</head>
+<body>
+    <div id="output"></div>
+    <script>
+        // declare a variable in JavaScript, using the command 'let'
+        let name = "Sapphire"; // String variable
+        let age = 22; // Integer variable
+        let height = 168.5; // Floating variable
+        const hometown = "Taichung";  
+
+        let isMerry = false; // Boolean variable
+
+        // Object variable
+        let family = ["Eric", "Iris", "Candy", "Aurora"];
+
+        // we want to display the name and age in the output by id attribute.
+        document.getElementById("output").innerHTML = 
+        name + " is " + age + " years old and is from " + hometown + ".";
+
+        // reassign the value of height
+        height = 166.3;
+
+        // Can't change value of a constant!
+        // hometown = "taipei";
+
+        // we want to display the family in the output by id.
+        document.getElementById("output").innerHTML = family;
+        console.log(family);
+
+        // Only developers can see the value of height, we are using console.log(height)
+        // console.log(height);
+
+    </script>
+</body>
+</html>

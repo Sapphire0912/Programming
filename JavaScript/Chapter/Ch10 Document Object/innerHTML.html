@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working with innerHTML</title>
+</head>
+<body>
+    <!-- keyword: Ajax -->
+    <div id="content">
+        <p>This paragraph will change when the document object's innerHTML property is accessed.</p>
+    </div>
+    <input type="button" value="Press Me" onclick="changeContent()"/>
+
+    <script>
+        function changeContent(){
+            document.getElementById('content').innerHTML = "<h3>See? The content has changes!</h3>";
+        }
+    </script>
+</body>
+</html>

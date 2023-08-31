@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+</head>
+<body>
+    <script lang="javascript" type="text/javascript">
+        // Navigator object
+        document.write("Code Name of the Browser: " + navigator.appCodeName);
+        document.write("<br>Name of Browser: " + navigator.appName);
+        document.write("<br>Version of Browser: " + navigator.appVersion);
+
+        // Windows object
+        document.write("<br>Document: " + window.document);
+        window.innerWidth = 200;
+        window.innerHeight = 200;
+        document.write("<br>Width: " + window.innerWidth);
+        document.write("<br>Height: "+ window.innerHeight);
+        // notice: Chrome 會自動調整網頁視窗的大小ㄝ, 不過顯示出的值會是 200, 200; 但不同瀏覽器也會有不同的調整方式
+
+        document.write("<br>Location: " + window.location)  // 讀取該網頁的檔案路徑
+        // window.location = "http://www.cnn.com"; // 會直接前往 cnn 網站
+        document.write("<br/>Location protocol: " + window.location.protocol); // 回傳該網頁使用的協定(http:)
+
+        // Screen object
+        document.write("<br>Screen Height: " + screen.height);
+        document.write("<br>Screen Width: " + screen.width);
+        document.write("<br>Screen Color Depth: " + screen.colorDepth);
+    </script>
+</body>
+</html>

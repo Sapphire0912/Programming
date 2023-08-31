@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch 02</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        th, td{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">
+        <p><b>Diamonds Information:</b></p>
+        <table id="diamond">
+            <tr><th>carat</th><th>cut</th><th>color</th><th>clarity</th>
+                <th>depth</th><th>table</th><th>price</th><th>x</th>
+                <th>y</th><th>z</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        fetch("diamonds.csv")
+        .then(x => x.text())
+        .then(y => displayText(y));
+
+        let row = 1;
+        displayText = (text) => {
+            let rows = text.split(/\r?\n|\r/); // regex(regular expression)
+            // console.log(rows);
+
+            for (let x = 1; x < rows.length - 2; x++){
+                let row = rows[x].split(',');
+                // console.log(row);
+                let tableRow = "<tr>" + 
+                    "<td>" + row[0] + "</td>" +
+                    "<td>" + row[1] + "</td>" +
+                    "<td>" + row[2] + "</td>" +
+                    "<td>" + row[3] + "</td>" +
+                    "<td>" + row[4] + "</td>" +
+                    "<td>" + row[5] + "</td>" +
+                    "<td>" + row[6] + "</td>" +
+                    "<td>" + row[7] + "</td>" +
+                    "<td>" + row[8] + "</td>" +
+                    "<td>" + row[9] + "</td>" +
+                    "</td></tr>";
+                
+                document.getElementById("diamond").innerHTML += tableRow;
+            }
+        }
+    </script>
+</body>
+</html>
