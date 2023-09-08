@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>故宮問卷調查</title>
+  </head>
+  <body>
+    <form action="">
+      <!-- 
+        <label> 裡的 for 屬性設定為一個 string, 
+            若該 string 和 input 的 id 對應上, 可以在 browser 中
+            點擊 label 設定的文字位置, 則 input 的文字輸入框就會被反白, 
+            或是自動引導(聚焦)到該輸入框的位置
+        -->
+      <label for="名字">姓名：</label>
+      <!-- 
+        <input> 的 屬性設定：
+        type 設定為 text 可以讓使用者輸入文字
+        設定 name 屬性, 可以將輸入框裡的資料送給 action 指定的位置
+            (從 url 可以看見表單送出前後的差異)
+        -->
+      <input id="名字" type="text" name="姓名" />
+      <!-- 
+        <button> 裡的 type 屬性設定為 submit：
+            可以將 form 裡的資料提交到 action 屬性指定的位置
+        -->
+      <button type="submit">提交表單</button>
+    </form>
+  </body>
+</html>
