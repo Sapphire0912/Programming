@@ -10,14 +10,23 @@
     <meta name="author" content="Eric HE" /> -->
     <title>台灣故宮資訊網</title>
     <base target="_blank" />
+    <style>
+      table,
+      tr,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
   </head>
   <body>
     <h1>國立故宮博物院</h1>
-    <h2>簡介：</h2>
+    <!-- <h2>簡介：</h2>
     <h3>簡介：</h3>
     <h4>簡介：</h4>
     <h5>簡介：</h5>
-    <h6>簡介：</h6>
+    <h6>簡介：</h6> -->
     <p style="color: blue" onclick="alert('剛剛按下了 p tag');">
       國立故宮博物院，簡稱<strong>臺灣故宮</strong>或臺北故宮（博物院），別名中山博物院，為臺灣最具規模的博物館以及臺灣八景之一，
       也是古代中國藝術史與漢學研究機構。館舍位於臺北市士林區，一年可接待超過614萬人次的參訪旅客，
@@ -30,12 +39,14 @@
       此後，博物館致力打造成為文化創意產業加值應用的虛擬博物館，館舍也歷經多次整修擴建。
     </p>
 
-    <!-- relative linking -->
-    <a href="./secondWeb.html" target="_blank">第二個頁面</a>
+    <div>
+      <!-- relative linking -->
+      <a href="./secondWeb.html" target="_blank">第二個頁面</a>
 
-    <!-- absolute linking -->
-    <a href="https://www.npm.gov.tw/">故宮網站連結</a>
-    <a href="https://www.amazon.com/">Amazon 網站</a><br />
+      <!-- absolute linking -->
+      <a href="https://www.npm.gov.tw/">故宮網站連結</a>
+      <a href="https://www.amazon.com/">Amazon 網站</a><br />
+    </div>
 
     <!-- relatvscode-file://vscode-app/e:/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmlive linking -->
     <img width="600" height="300" src="../img/故宮圖片1.jpeg" alt="故宮圖片" />
@@ -61,5 +72,26 @@
       <li>郭熙〈早春圖〉</li>
       <li>李唐〈萬壑松風圖〉</li>
     </ol>
+
+    <h2>基礎資訊</h2>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="3">國立故宮博物院資訊</th>
+        </tr>
+        <tr>
+          <th>所屬部門</th>
+          <th>員額</th>
+          <th>授權法源</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>行政院</td>
+          <td>502人</td>
+          <td>行政院組織法、國立故宮博物院組織法</td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>
