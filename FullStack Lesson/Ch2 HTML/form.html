@@ -25,7 +25,21 @@
         <button> 裡的 type 屬性設定為 submit：
             可以將 form 裡的資料提交到 action 屬性指定的位置
         -->
+
+      <label for="信箱">信箱:</label>
+      <input type="email" id="信箱" name="email" required />
+      <!-- required 屬性是要求使用者必須填寫此欄位的資料 -->
+
+      <input id="電子報" type="checkbox" checked name="電子報" value="訂閱" />
+      <!-- 
+        value 是設定 name 後面的值顯示的內容 (從 url 可看出差異) 
+        在 checkbox 裡面的 checked 屬性, 可以更改 checkbox 的框
+        是否為打勾狀態
+      -->
+      <label for="電子報">訂閱電子報</label>
       <button type="submit">提交表單</button>
+
+      <input type="file" />
     </form>
   </body>
 </html>
