@@ -49,6 +49,9 @@
       <input id="other" type="radio" name="gender" value="other" />
       <label for="other">其他</label> -->
 
+      <!-- 用來頁面的換行使用 -->
+      <hr />
+
       <!-- 性別設定的其他方法 -->
       <label for="gender">性別:</label>
       <select name="gender" id="gender" required>
@@ -58,9 +61,13 @@
         <option value="other">其他</option>
       </select>
 
+      <hr />
+
       <label for="信箱">信箱:</label>
       <input type="email" id="信箱" name="email" required />
       <!-- required 屬性是要求使用者必須填寫此欄位的資料 -->
+
+      <hr />
 
       <label for="password">密碼:</label>
       <input
@@ -74,6 +81,8 @@
         minlength, maxlength 可以設定 type 屬性類型的最小和最大長度限制 
         placeholder 可以在 input 框顯示提示訊息 -->
       <input type="checkbox" id="showPW" onclick="showPassword" />Show Password
+
+      <hr />
 
       <label for="年齡">年齡:</label>
       <!-- 0<input type="range" min="0" max="125" step="1" id="年齡" name="Age" />125 -->
@@ -92,14 +101,16 @@
         min, max 是設定使用者可以調整年齡值的上下限 
         step 是設定每按上下數的按鈕後, 增加或減少的大小
       -->
+      <hr />
 
       <input id="電子報" type="checkbox" checked name="電子報" value="訂閱" />
+      <label for="電子報">訂閱電子報</label>
       <!-- 
         value 是設定 name 後面的值顯示的內容 (從 url 可看出差異) 
         在 checkbox 裡面的 checked 屬性, 可以更改 checkbox 的框
         是否為打勾狀態
       -->
-      <label for="電子報">訂閱電子報</label>
+      <hr />
 
       <label for="area">地區:</label>
       <input list="area-list" type="text" name="area" id="area" />
@@ -110,6 +121,7 @@
         <option value="桃園市">桃園市</option>
         <option value="高雄市">高雄市</option>
       </datalist>
+      <hr />
 
       <label for="suggestion">給網站的建議:</label>
       <textarea
@@ -119,11 +131,14 @@
         rows="10"
         placeholder="給網站的建議"
       ></textarea>
+      <hr />
 
       <!-- <button type="submit">提交表單</button> -->
       <!-- 在 form 標籤裡面的 button type 類型一定是 submit -->
       <button>提交表單</button>
+      <hr />
 
+      <p>Sapphire 2024@</p>
       <!-- <input type="file" /> -->
     </form>
     <script>
