@@ -32,6 +32,31 @@
         <button> 裡的 type 屬性設定為 submit：
             可以將 form 裡的資料提交到 action 屬性指定的位置
         -->
+      <!-- 設定性別(較不好的做法) checkbox 會有複選的問題存在 -->
+      <!-- <input id="male" type="checkbox" name="gender" value="male" />
+      <label for="male">男性</label>
+      <input id="female" type="checkbox" name="gender" value="female" />
+      <label for="female">女性</label>
+      <input id="other" type="checkbox" name="gender" value="other" />
+      <label for="other">其他</label> -->
+
+      <!-- 性別設定較好的做法 radio 在相同的集合裡的選項(name設定相同的為一個集合)只能選擇一個 -->
+      <!-- <input id="male" type="radio" name="gender" value="male" required /> -->
+      <!-- checked 給予預設圈選的值 -->
+      <!-- <label for="male">男性</label>
+      <input id="female" type="radio" name="gender" value="female" />
+      <label for="female">女性</label>
+      <input id="other" type="radio" name="gender" value="other" />
+      <label for="other">其他</label> -->
+
+      <!-- 性別設定的其他方法 -->
+      <label for="gender">性別:</label>
+      <select name="gender" id="gender" required>
+        <option>請選擇</option>
+        <option value="male">男性</option>
+        <option value="female">女性</option>
+        <option value="other">其他</option>
+      </select>
 
       <label for="信箱">信箱:</label>
       <input type="email" id="信箱" name="email" required />
@@ -45,10 +70,14 @@
         maxlength="40"
         placeholder="請輸入至少8個字元的密碼"
       />
-      <!-- minlength, maxlength 可以設定 type 屬性類型的最小和最大長度限制 -->
+      <!-- 
+        minlength, maxlength 可以設定 type 屬性類型的最小和最大長度限制 
+        placeholder 可以在 input 框顯示提示訊息 -->
       <input type="checkbox" id="showPW" onclick="showPassword" />Show Password
 
       <label for="年齡">年齡:</label>
+      <!-- 0<input type="range" min="0" max="125" step="1" id="年齡" name="Age" />125 -->
+
       <input
         type="number"
         id="年齡"
@@ -71,7 +100,29 @@
         是否為打勾狀態
       -->
       <label for="電子報">訂閱電子報</label>
-      <button type="submit">提交表單</button>
+
+      <label for="area">地區:</label>
+      <input list="area-list" type="text" name="area" id="area" />
+      <datalist id="area-list">
+        <option value="台北市">台北市</option>
+        <option value="新北市">新北市</option>
+        <option value="台中市">台中市</option>
+        <option value="桃園市">桃園市</option>
+        <option value="高雄市">高雄市</option>
+      </datalist>
+
+      <label for="suggestion">給網站的建議:</label>
+      <textarea
+        name="suggestion"
+        id="suggestion"
+        cols="30"
+        rows="10"
+        placeholder="給網站的建議"
+      ></textarea>
+
+      <!-- <button type="submit">提交表單</button> -->
+      <!-- 在 form 標籤裡面的 button type 類型一定是 submit -->
+      <button>提交表單</button>
 
       <!-- <input type="file" /> -->
     </form>
