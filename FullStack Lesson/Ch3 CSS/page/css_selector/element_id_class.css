@@ -1,0 +1,11 @@
+/* element selector */
+h2 {
+  color: greenyellow;
+}
+
+/* ID selector */
+#first-paragragh {
+  color: rgb(100, 20, 50);
+}
+
+/* class selector */
