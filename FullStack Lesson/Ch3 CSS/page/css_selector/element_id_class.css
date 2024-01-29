@@ -9,3 +9,15 @@ h2 {
 }
 
 /* class selector */
+.orange-text {
+  color: orange;
+}
+.large-text {
+  font-size: 28px;
+}
+
+/* element selector and class selector 混用 */
+a.large-text {
+  font-size: 16px;
+  color: gray;
+}
