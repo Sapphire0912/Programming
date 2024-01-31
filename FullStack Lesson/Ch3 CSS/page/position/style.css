@@ -1,9 +1,12 @@
 /* static 設定 */
+body {
+  height: 4000px;
+}
+
 div.container {
   width: 500px;
   height: 2000px;
   background-color: black;
-  position: relative;
 }
 
 .box {
@@ -16,9 +19,8 @@ div.container {
 }
 .box2 {
   background-color: lightpink;
-  position: absolute;
-  right: 0;
-  top: 0;
+  position: sticky;
+  top: 5px;
 }
 .box3 {
   background-color: lightcyan;
