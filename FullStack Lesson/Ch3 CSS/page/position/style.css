@@ -1,0 +1,25 @@
+/* static 設定 */
+div.container {
+  width: 500px;
+  height: 2000px;
+  background-color: black;
+  position: relative;
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+}
+
+.box1 {
+  background-color: aqua;
+}
+.box2 {
+  background-color: lightpink;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.box3 {
+  background-color: lightcyan;
+}
