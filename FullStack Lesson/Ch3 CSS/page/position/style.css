@@ -17,11 +17,33 @@ div.container {
 .box1 {
   background-color: aqua;
 }
+
 .box2 {
   background-color: lightpink;
-  position: sticky;
-  top: 5px;
+  position: relative;
+  z-index: 0;
 }
+
 .box3 {
   background-color: lightcyan;
+}
+
+.small-box {
+  width: 100px;
+  height: 100px;
+}
+
+.box4 {
+  background-color: orange;
+  position: absolute;
+  left: 20px;
+  z-index: -1;
+}
+
+.box5 {
+  background-color: silver;
+  position: absolute;
+  top: 30px;
+  left: 80px;
+  z-index: -1;
 }

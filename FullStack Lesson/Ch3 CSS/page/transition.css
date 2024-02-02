@@ -1,0 +1,12 @@
+/* 設定 transition 屬性, background-color(當h1標題被游標觸碰時), 變成完全綠色花費 2s. */
+/* 設定 all 代表所有屬性都要呈現慢速動畫效果 */
+/* ease-in-out 可以呈現先慢後快的動態效果 詳細可參考連結 */
+
+h1 {
+  transition: all 2s ease-in-out;
+}
+
+h1:hover {
+  background-color: green;
+  color: white;
+}
