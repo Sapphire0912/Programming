@@ -1,0 +1,54 @@
+div.container {
+  width: 500px;
+  height: 500px;
+  background-color: black;
+  /* position: relative; */
+}
+
+div.box {
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+
+  /* 動畫設定 */
+  /* animation-name: changeColor;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+  position: relative;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+  animation-direction: alternate; */
+
+  animation: changeColor 1s ease-in 0s infinite alternate forwards;
+  position: relative;
+
+  /* transition: all 1s; */
+
+  /* 讓圖形置中的方法 */
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+}
+
+/* div.box:hover {
+  /* transform: translate(100px, 200px); 
+  /* transform: rotate(180deg); 
+  /* transform: rotateX(180deg); 
+  /* transform: rotateY(180deg); 
+  transform: scale(0.5, 2);
+} */
+
+@keyframes changeColor {
+  from {
+    background-color: aqua;
+    top: 0px;
+    left: 0px;
+  }
+  to {
+    background-color: red;
+    top: 400px;
+    left: 400px;
+  }
+}
