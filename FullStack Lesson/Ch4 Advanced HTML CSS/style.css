@@ -1,11 +1,22 @@
 div.container {
   border: 3px solid black;
   display: flex;
+  /* default: row */
+  flex-direction: column-reverse;
+
+  /* 若網頁寬度無法將內容放置在同一行時, 設置 wrap 可以保持原來大小換到下一行顯示 */
+  /* default: nowrap */
+  flex-wrap: wrap;
+
+  /* 設置容器內元件的擺放方式, 會根據 flex-direction 設定的方向去擺放 */
+  /* default: flex-start */
+  justify-content: space-between;
+  height: 1500px;
 }
 
 .box {
-  width: 250px;
-  height: 250px;
+  width: 150px;
+  height: 150px;
 }
 
 .small-box {
