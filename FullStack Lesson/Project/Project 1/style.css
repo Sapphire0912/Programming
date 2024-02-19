@@ -88,6 +88,100 @@ section.right h3{
     padding-top: 0.5rem;
 }
 
-section.right p {
+p {
     padding: 0.5rem 0rem;
+}
+
+section.right ul{
+    margin-left: 2rem;
+}
+
+main.no-flex{
+    display: block;
+}
+
+.player{
+    margin: 2rem;
+    border: 3px solid burlywood;
+    padding: 0.5rem;
+}
+
+.player h4{
+    font-size: 1.5rem;
+    color: rgb(0, 90, 91);
+}
+
+.player h5{
+    font-size: 1.05rem;
+    color: rgb(6, 120, 120);
+}
+
+div.japan{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+
+div.japan div.image{
+    flex:1 1 300px; 
+    display: flex;
+    align-items: center;
+}
+
+div.japan div.image img{
+    width: 100%;
+}
+
+div.japan div.info{
+    flex:3 1 600px;
+    padding: 2rem;
+}
+
+div.competition{
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.competition div.text{
+    flex: 5 1 300px;
+    padding: 1rem;
+}
+
+div.competition div.text h3{
+    font-size: 2rem;
+    color:rgb(12, 122, 92);
+}
+
+#piechart{
+    flex: 1 1 300px;
+}
+
+section.china h3{
+    font-size: 2rem;
+    color: rgb(12, 122, 92);
+}
+
+.china table, .china th, .china td{
+    border: 1px solid white;
+    border-collapse: collapse;
+    padding: 2px 4px;
+}
+
+.china table{
+    min-width: 1000px;
+}
+
+.china th{
+    background-color: rgb(86, 244, 192);
+    color: white;
+}
+
+.taiwan h3{
+    font-size: 2rem;
+    color: rgb(12, 122, 92);
+}
+
+.taiwan ul{
+    margin-left: 2rem;
 }
