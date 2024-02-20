@@ -185,3 +185,10 @@ section.china h3{
 .taiwan ul{
     margin-left: 2rem;
 }
+
+/* 當網頁視窗小於 600 px, 將導覽列改成直向顯示 */
+@media screen and (max-width: 600px) {
+    header nav ul{
+        flex-direction: column;
+    }
+}
