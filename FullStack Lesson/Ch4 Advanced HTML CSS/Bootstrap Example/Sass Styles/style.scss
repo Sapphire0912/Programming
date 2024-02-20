@@ -1,0 +1,54 @@
+// 變數設定
+$themeColor: red;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// mixin 用法(類似函數宣告一樣)
+@mixin flexbox($direction){
+    display: flex;
+    flex-direction: $direction;
+}
+
+// import 用法(像 python 一樣導入 library)
+// 被 import 的檔案, 檔名開頭一定要有個底線. 被 import 後檔案的底線和副檔名都會消失
+// @import "./header";
+
+h1{
+    background-color: white;
+}
+
+// Nested CSS 巢狀語法
+header{
+    nav{
+        ul{
+            // display: flex;
+            // @include 用來呼叫 minin 設計的函數
+            @include flexbox($direction: column);
+            flex-wrap: wrap;
+            li{
+                list-style-type: none;
+                a{
+                    color: $themeColor;
+                    text-decoration: none;
+                    // Self ampersand 用法(& 符號代表指向 a tag 本身)
+                    &:hover{
+                        color: aqua;
+                    }
+                }
+            }
+        }
+    }
+}
+
+h1{
+    color: $themeColor;
+}
+
+h2{
+    color: $themeColor;
+}
+

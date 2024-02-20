@@ -1,8 +1,13 @@
+@font-face{
+    font-family: "myFont";
+    src: url(./font/JasonHandwriting1.ttf);
+}
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: DFkai-sb, sans-serif;
+    font-family: "myFont", DFkai-sb, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6{
