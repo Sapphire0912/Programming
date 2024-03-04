@@ -36,6 +36,46 @@ body {
   main {
     section.main-area {
       min-height: 70vh;
+      background-color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+      div.info {
+        flex-basis: 450px;
+        // border: 1px solid black;
+        padding: 1rem;
+        h1 {
+          font-size: 3.5rem;
+        }
+        h2 {
+          font-size: 1rem;
+        }
+        a {
+          background-color: rgb(54, 212, 138);
+          color: white;
+          text-decoration: none;
+          padding: 0.25rem 0.5rem;
+          font-size: 1.5rem;
+          border-radius: 20px;
+
+          display: inline-block;
+          margin: 2rem 0.25rem;
+          transition: all 0.2s ease-in;
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+
+      div.image-area {
+        flex-basis: 450px;
+        // border: 1px solid red;
+        img {
+          width: 100%;
+        }
+      }
     }
   }
 }
