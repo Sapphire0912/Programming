@@ -30,6 +30,12 @@ body {
     flex-wrap: wrap;
     align-items: center;
 
+    // 設定 header 會一直在網頁的最上方
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 10px 6px -6px #777;
+
     section.logo {
       flex: 2 1 400px;
       //   border: 2px solid green;
@@ -219,4 +225,25 @@ body {
       }
     }
   }
+}
+
+// Scrollbar 設定(Google Browser)
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $themeColor;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(245, 78, 214);
 }
