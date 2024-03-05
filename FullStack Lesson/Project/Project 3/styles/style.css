@@ -134,7 +134,7 @@ body main section.resume section.picture div.Rectangle {
 body main section.resume section.picture div.Rectangle2 {
   width: 50vw;
   height: 40vh;
-  border: 10px solid rgb(195, 255, 200);
+  border: 10px solid rgb(195, 255, 225);
   position: absolute;
   top: 300px;
   left: -300px;
