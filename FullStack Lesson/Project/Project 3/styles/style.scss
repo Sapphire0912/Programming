@@ -14,6 +14,7 @@ h6 {
 }
 
 body {
+  overflow-x: hidden;
   nav {
     background-color: white;
     position: sticky;
@@ -110,7 +111,11 @@ body {
 
       section.table {
         // border: 2px solid black;
-        flex: 5 1 500px;
+
+        // flex-shrink 設定為 0 時, 即使畫面縮小元件尺吋也不會收縮
+        // flex: 5 1 500px;
+        flex: 5 0 500px;
+
         padding: 2rem;
         table {
           border-collapse: collapse;
@@ -182,6 +187,7 @@ body {
         }
       }
       section.resume {
+        overflow-x: auto;
         section.picture {
           div.Rectangle,
           div.Rectangle2,

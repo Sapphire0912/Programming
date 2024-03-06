@@ -13,6 +13,9 @@ h6 {
   font-weight: normal;
 }
 
+body {
+  overflow-x: hidden;
+}
 body nav {
   background-color: white;
   position: sticky;
@@ -95,7 +98,7 @@ body main section.resume {
   align-items: center;
 }
 body main section.resume section.table {
-  flex: 5 1 500px;
+  flex: 5 0 500px;
   padding: 2rem;
 }
 body main section.resume section.table table {
@@ -153,6 +156,9 @@ body main section.resume section.picture div.Rectangle3 {
 @media screen and (max-width: 800px) {
   body main section.about-me section.description {
     width: 80%;
+  }
+  body main section.resume {
+    overflow-x: auto;
   }
   body main section.resume section.picture div.Rectangle,
   body main section.resume section.picture div.Rectangle2,
