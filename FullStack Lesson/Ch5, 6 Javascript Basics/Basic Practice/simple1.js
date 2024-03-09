@@ -56,7 +56,7 @@ function position(string) {
     for (let i = 0; i < string.length - 1; i++) {
       let check = string[i].toUpperCase();
       if (check == string[i]) {
-        return [string[i], i];
+        return string[i] + " " + i;
       }
     }
   }
