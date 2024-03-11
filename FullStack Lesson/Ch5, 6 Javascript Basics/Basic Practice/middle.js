@@ -46,6 +46,128 @@ function alg(number) {
   }
   return 2 ** (n - 1);
 }
-console.log(alg(1000));
+// console.log(alg(1000));
 
 /* 4. 請證明，任何使用比較array元素大小來做排序的演算法，其最好的時間複雜度是： O(n log2_n)*/
+/* A. Merge sort */
+function merge(left, right) {
+  let result = [];
+  while (left.length > 0 && right.length > 0) {
+    if (left[0] < right[0]) {
+      result.push(left.shift());
+    } else {
+      result.push(right.shift());
+    }
+  }
+  console.log(result.concat(left, right));
+  return result.concat(left, right);
+}
+
+function mergeSort(array) {
+  if (array.length <= 1) return array;
+  let middle = Math.floor(array.length / 2);
+  let left = array.slice(0, middle);
+  let right = array.slice(middle);
+
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+// mergeSort([2, 11, 8, 9, 34, 51, 17, 6, 1, -8, 30, 13]);
+
+/* 5. 8皇后問題, 改成輸入 n 皇后來計算出獨立解答數 */
+let Perfect = 0;
+queen(8);
+console.log("Number of Perfect Solution is " + Perfect);
+
+function queen(n) {
+  let arr = [];
+  for (let i = 0; i < n; i++) {
+    let reg = [];
+    for (let j = 0; j < n; j++) {
+      reg.push(null);
+    }
+    arr.push(reg);
+  }
+
+  let i = 0;
+  let j = 0;
+  let loop = true;
+  while (loop) {
+    console.log(i, j);
+    arr[i][j] = "Q";
+
+    // 檢查 Q 是否可以放置
+    let violation = false;
+    let k = 0;
+    while (k < i) {
+      // 檢查 column 是否衝突
+      if (arr[k][j] == "Q") violation = true;
+      k++;
+    }
+    k = 0;
+    while (k < j) {
+      // 檢查 row 是否衝突
+      if (arr[i][k] == "Q") violation = true;
+      k++;
+    }
+    k = 1;
+    let l = -1;
+    while (i + k < n && j + l >= 0) {
+      // 檢查左下角是否衝突
+      if (arr[i + k][j + l] == "Q") violation = true;
+      k++;
+      l--;
+    }
+    k = -1;
+    while (i + k >= 0 && j + k >= 0) {
+      // 檢查右上角是否衝突
+      if (arr[i + k][j + k] == "Q") violation = true;
+      k--;
+    }
+    // 當沒有衝突的時候, 代表該位置可以放置 Q
+    if (!violation) {
+      console.log("OK");
+      console.log(arr);
+      // 當已經放置到最後一個 column 時, 要顯示 array 並且換下個 row 繼續開始檢查
+      if (j == n - 1) {
+        Perfect++;
+        console.log("Perfect");
+        console.log(arr);
+        arr[i][j] = null;
+        i++;
+      } else {
+        i = 0;
+        j++;
+      }
+    }
+    if (violation) {
+      console.log("Not OK");
+      console.log(arr);
+      arr[i][j] = null;
+      i++;
+    }
+
+    function check() {
+      // go back to the previous column
+      j--;
+      for (let b = 0; b < arr.length; b++) {
+        if (arr[b][j] == "Q") {
+          arr[b][j] = null;
+          console.log("b and j is ");
+          console.log(b, j);
+          i = b + 1;
+          break;
+        }
+      }
+    }
+
+    while (i >= n) {
+      check();
+      if (j < 0) {
+        console.log("dead end");
+        loop = false;
+        break;
+      }
+    }
+  }
+}
