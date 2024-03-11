@@ -130,4 +130,4 @@ function factorPrime(number) {
   }
   return result;
 }
-console.log(factorPrime(96));
+// console.log(factorPrime(96));
