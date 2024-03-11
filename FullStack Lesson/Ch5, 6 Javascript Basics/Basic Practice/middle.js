@@ -74,10 +74,10 @@ function mergeSort(array) {
 
 // mergeSort([2, 11, 8, 9, 34, 51, 17, 6, 1, -8, 30, 13]);
 
-/* 5. 8皇后問題, 改成輸入 n 皇后來計算出獨立解答數 */
+/* 5. 8皇后問題, 改成輸入 n 皇后來計算出解答數 */
 let Perfect = 0;
-queen(8);
-console.log("Number of Perfect Solution is " + Perfect);
+// queen(8);
+// console.log("Number of Perfect Solution is " + Perfect);
 
 function queen(n) {
   let arr = [];
@@ -171,3 +171,43 @@ function queen(n) {
     }
   }
 }
+
+// 以下改另一種方式實作
+function NQueen(n) {
+  let board = [];
+  let solutions = [];
+
+  for (let i = 0; i < n; i++) {
+    board.push(-1);
+  }
+
+  function isViolation(row, col) {
+    for (let i = 0; i < row; i++) {
+      // 檢查 同一個 column 或是對角線是否有皇后
+      if (board[i] == col || Math.abs(row - i) == Math.abs(col - board[i])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function placeQueen(row) {
+    if (row == n) {
+      solutions.push([...board]);
+      return;
+    }
+    for (let col = 0; col < n; col++) {
+      if (isViolation(row, col)) {
+        board[row] = col;
+        placeQueen(row + 1);
+        board[row] = -1; // 回朔
+      }
+    }
+  }
+  placeQueen(0);
+  return solutions;
+}
+
+let allSolve = NQueen(8);
+console.log("每個解為:\n", allSolve);
+console.log("總共有 " + allSolve.length + " 組解.");
