@@ -7,7 +7,7 @@
 // let first_found = document.querySelector("a.my-P");
 // // console.log(first_found);
 
-// let selectorAll = document.querySelectorAll(".my-P"); // return 長度為 5 的 node list
+// let selectorAll = document.querySelectorAll(".my-P"); // return 長度為 3 的 node list
 // console.log(selectorAll);
 
 // HTMLCollection 動態(dynamic)
