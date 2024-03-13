@@ -208,6 +208,6 @@ function NQueen(n) {
   return solutions;
 }
 
-let allSolve = NQueen(8);
+let allSolve = NQueen(6);
 console.log("每個解為:\n", allSolve);
 console.log("總共有 " + allSolve.length + " 組解.");
