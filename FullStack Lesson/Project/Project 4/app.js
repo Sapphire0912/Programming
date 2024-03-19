@@ -168,3 +168,96 @@ window.onload = function () {
     f.reset();
   });
 };
+
+// 點選新增按鈕就會新增一個 form
+let addButton = document.querySelector(".plus-btn");
+addButton.addEventListener("click", () => {
+  let newForm = document.createElement("form");
+  let newDiv = document.createElement("div");
+  newDiv.classList.add("grader");
+
+  // 製作表單元素
+  let newInput1 = document.createElement("input");
+  newInput1.setAttribute("type", "text");
+  newInput1.setAttribute("list", "opt");
+  newInput1.classList.add("class-type");
+
+  let newInput2 = document.createElement("input");
+  newInput2.setAttribute("type", "text");
+  newInput2.classList.add("class-number");
+
+  let newInput3 = document.createElement("input");
+  newInput3.setAttribute("type", "number");
+  newInput3.setAttribute("min", "0");
+  newInput3.setAttribute("max", "6");
+  newInput3.classList.add("class-credit");
+  newInput3.addEventListener("change", () => {
+    setGPA();
+  });
+
+  let newSelect = document.createElement("select");
+  newSelect.innerHTML =
+    '<select><option value=""></option><option value="A">A</option><option value="A-">A-</option><option value="B+">B+</option><option value="B">B</option><option value="B-">B-</option><option value="C+">C+</option><option value="C">C</option><option value="C-">C-</option><option value="D+">D+</option><option value="D">D</option><option value="D-">D-</option><option value="F">F</option></select>';
+  newSelect.classList.add("select");
+  newSelect.addEventListener("change", (e) => {
+    setGPA();
+    changeColor(e.target);
+  });
+
+  let newButton = document.createElement("button");
+  newButton.classList.add("trash-button");
+  let newItag = document.createElement("i");
+  newItag.classList.add("fas");
+  newItag.classList.add("fa-trash");
+  newButton.appendChild(newItag);
+  // 這是清除表單的動畫, 第2種呈現方式; 利用 animationend 效果
+  newButton.addEventListener("click", (e) => {
+    e.preventDefault(); // 避免送出表單內容
+    e.target.parentElement.parentElement.style.animation =
+      "scaleDown 0.5s ease forwards";
+    e.target.parentElement.parentElement.addEventListener(
+      "animationend",
+      (e) => {
+        e.target.remove();
+        setGPA();
+      }
+    );
+  });
+
+  // 將表單新增至 HTML 頁面, 並在各自對應的父元素上
+  newDiv.appendChild(newInput1);
+  newDiv.appendChild(newInput2);
+  newDiv.appendChild(newInput3);
+  newDiv.appendChild(newSelect);
+  newDiv.appendChild(newButton);
+  newForm.appendChild(newDiv);
+  document.querySelector(".all-inputs").appendChild(newForm);
+  newForm.style.animation = "scaleUp 0.5s ease forwards";
+});
+
+// 製作垃圾桶功能
+let allTrash = document.querySelectorAll(".trash-button");
+allTrash.forEach((trash) => {
+  // 讓整個 form 消失
+  trash.addEventListener("click", (e) => {
+    // 找到該垃圾桶上層的 form Element 並移除
+    // console.log(e.target.parentElement.parentElement);
+
+    // 若直接移除就沒有動畫效果, 所以改用 CSS 的方式讓 form 漸漸消失
+    // e.target.parentElement.parentElement.remove();
+
+    /* 註: CSS的消失動畫不是真的讓 form 完全從 HTML 移除, 會留一大個空白在 HTML 上.
+           因此, 要實現動畫執行結束後刪除 form 的效果, 要在外部寫一個 function
+     */
+    e.target.parentElement.parentElement.classList.add("remove");
+  });
+});
+
+allTrash.forEach((trash) => {
+  let form = trash.parentElement.parentElement;
+  // 當動畫執行結束後, 才會刪除 form; transitionend: 代表動畫結束才會執行的 function
+  form.addEventListener("transitionend", (e) => {
+    e.target.remove();
+    setGPA();
+  });
+});
