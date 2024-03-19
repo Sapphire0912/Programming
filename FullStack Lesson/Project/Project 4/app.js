@@ -310,7 +310,97 @@ function handleSorting(direction) {
   if (direction == "descending") {
     objectArray = objectArray.reverse();
   }
-  console.log(objectArray);
+
+  // 根據 object array 內容來更新網頁內容
+  let allInputs = document.querySelector(".all-inputs");
+  allInputs.innerHTML = ""; // 清空 allInputs 裡面的內容
+  for (let i = 0; i < objectArray.length; i++) {
+    let formContent = `<form>
+    <div class="grader">
+      <input
+        type="text"
+        placeholder="class category"
+        class="class-type"
+        list="opt"
+        value=${objectArray[i].class_name}
+      /><!--
+      --><input
+        type="text"
+        placeholder="class number"
+        class="class-number"
+        value=${objectArray[i].class_number}
+      /><!--
+      --><input
+        type="number"
+        placeholder="credits"
+        min="0"
+        max="6"
+        class="class-credit"
+        value=${objectArray[i].class_credit}
+      /><!--
+      --><select name="select" class="select">
+        <option value=""></option>
+        <option value="A">A</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B">B</option>
+        <option value="B-">B-</option>
+        <option value="C+">C+</option>
+        <option value="C">C</option>
+        <option value="C-">C-</option>
+        <option value="D+">D+</option>
+        <option value="D">D</option>
+        <option value="D-">D-</option>
+        <option value="F">F</option></select
+      ><!--
+      --><button class="trash-button">
+        <i class="fas fa-trash"></i>
+      </button>
+    </div>
+    </form>`;
+    allInputs.innerHTML += formContent;
+  }
+
+  // select 沒辦法直接用 string 更改, 因此直接用 js 更改
+  graders = document.querySelectorAll("div.grader");
+  for (let i = 0; i < graders.length; i++) {
+    graders[i].children[3].value = objectArray[i].class_grade;
+  }
+
+  // 將新的 form 內容新增事件監聽(select)
+  let allSelects = document.querySelectorAll("select");
+  allSelects.forEach((select) => {
+    changeColor(select);
+    select.addEventListener("change", (e) => {
+      setGPA();
+      changeColor(e.target);
+    });
+  });
+
+  // credits 事件監聽
+  let allCredits = document.querySelectorAll(".class-credit");
+  allCredits.forEach((credits) => {
+    credits.addEventListener("change", (e) => {
+      setGPA();
+    });
+  });
+
+  // 垃圾桶 事件監聽
+  let allTrash = document.querySelectorAll(".trash-button");
+  allTrash.forEach((trash) => {
+    trash.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.target.parentElement.parentElement.style.animation =
+        "scaleDown 0.5s ease forwards";
+      e.target.parentElement.parentElement.addEventListener(
+        "animationend",
+        (e) => {
+          e.target.remove();
+          setGPA();
+        }
+      );
+    });
+  });
 }
 
 function merge2(a1, a2) {
