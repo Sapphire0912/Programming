@@ -261,3 +261,117 @@ allTrash.forEach((trash) => {
     setGPA();
   });
 });
+
+// 排序演算法 merge sort
+let btn1 = document.querySelector(".sort-descending");
+let btn2 = document.querySelector(".sort-ascending");
+btn1.addEventListener("click", () => {
+  handleSorting("descending");
+});
+
+btn2.addEventListener("click", () => {
+  handleSorting("ascending");
+});
+
+function handleSorting(direction) {
+  let graders = document.querySelectorAll("div.grader");
+  let objectArray = [];
+
+  for (let i = 0; i < graders.length; i++) {
+    let children = graders[i].children;
+    let class_name = children[0].value;
+    let class_number = children[1].value;
+    let class_credit = children[2].value;
+    let class_grade = children[3].value;
+    // 直接利用變數名稱當成 key, 屬於 js 的特別用法
+    if (
+      !(
+        class_name == "" &&
+        class_number == "" &&
+        class_credit == "" &&
+        class_grade == ""
+      )
+    ) {
+      let class_object = {
+        class_name,
+        class_number,
+        class_credit,
+        class_grade,
+      };
+      objectArray.push(class_object);
+    }
+  }
+  // 取得 object array 後, 將 grade 轉成 Number; 將 objectArray 新增 class_grade_number 屬性
+  for (let i = 0; i < objectArray.length; i++) {
+    objectArray[i].class_grade_number = convertor(objectArray[i].class_grade);
+  }
+  // objectArray = mergeSort2(objectArray);
+  objectArray = mergeSort(objectArray); // self mergesort
+  if (direction == "descending") {
+    objectArray = objectArray.reverse();
+  }
+  console.log(objectArray);
+}
+
+function merge2(a1, a2) {
+  let result = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < a1.length && j < a2.length) {
+    if (a1[i].class_grade_number > a2[j].class_grade_number) {
+      result.push(a2[j]);
+      j++;
+    } else {
+      result.push(a1[i]);
+      i++;
+    }
+  }
+
+  while (i < a1.length) {
+    result.push(a1[i]);
+    i++;
+  }
+
+  while (j < a2.length) {
+    result.push(a2[j]);
+    j++;
+  }
+
+  return result;
+}
+
+function mergeSort2(arr) {
+  if (arr.length == 0) return;
+  if (arr.length == 1) return arr;
+
+  let middle = Math.floor(arr.length / 2);
+  let left = arr.slice(0, middle);
+  let right = arr.slice(middle);
+
+  return merge2(mergeSort2(left), mergeSort2(right));
+}
+
+function merge(left, right) {
+  let result = [];
+  while (left.length > 0 && right.length > 0) {
+    if (left[0].class_grade_number < right[0].class_grade_number) {
+      result.push(left.shift());
+    } else {
+      result.push(right.shift());
+    }
+  }
+  return result.concat(left, right);
+}
+
+function mergeSort(array) {
+  // 和 0 做位元運算符 OR 運算, 可以去除小數點的部分; 目前有 C, js 可以這麼做(較低階的語言)
+  // JavaScript 中，使用位元 OR 運算符 | 對數字進行運算時，會將其轉換為 32 位元有符號整數，然後執行按位 OR 運算。
+  // 在這個過程中，小數部分將被移除，因為這些運算只影響整數部分。
+  if (array.length <= 1) return array;
+  let middle = (array.length / 2) | 0;
+  let left = array.slice(0, middle);
+  let right = array.slice(middle);
+
+  return merge(mergeSort(left), mergeSort(right));
+}
