@@ -116,3 +116,100 @@ function fib(n) {
 }
 
 // console.log(fib(10));
+
+// Constructor Function
+// 若要建立很多相似的 Code 物件, 這樣寫顯得難維護又浪費空間. 因此 js 有了 Constructor function
+// let Eric = {
+//   name: "Eric",
+//   sayHi() {
+//     console.log(this.name + " say hello.");
+//   },
+// };
+
+// let Sapphire = {
+//   name: "Sapphire",
+//   sayHi() {
+//     console.log(this.name + " say hello.");
+//   },
+// };
+
+// let Iris = {
+//   name: "Iris",
+//   sayHi() {
+//     console.log(this.name + " say hello.");
+//   },
+// };
+
+/* 
+JS 建立 constructor function(命名通常以大寫開頭)
+和 Inheritance and Prototype Chain 
+*/
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.sayHi = function () {
+    console.log(this.name + " say hi.");
+  };
+}
+// console.log(Person.prototype); // {}
+
+// 使用 new, 就會將 function 變成 constructor function
+let eric = new Person("Eric", 24);
+// console.log(eric); // Person { name: 'Eric', age: 24 }
+// eric.sayHi(); // Iris say hi.
+
+// __proto__ 屬性會指向 Person.prototype 屬性
+// => sapphire.__proto__ -> Person.prototype
+let sapphire = new Person("Sapphire", 20);
+// console.log(sapphire.__proto__ == Person.prototype); // true
+let iris = new Person("Iris", 26);
+Person.prototype.hello = function () {
+  console.log(this.name + " say hello.");
+};
+Person.prototype.sex = function (x) {
+  console.log("性別是: ", x);
+};
+Person.prototype.type = "人類";
+
+// iris.hello();
+// console.log(sapphire.hello == iris.hello); // true
+// sapphire.sex("男");
+// console.log(iris.type);
+
+// Inheritance and Prototype Chain
+// let eric = {
+//   name: "Eric",
+//   sayHi() {
+//     console.log("Hello");
+//   },
+// };
+
+// let iris = {
+//   __proto__: eric,
+// };
+
+// iris.sayHi();
+
+// Function.prototype Methods
+let food = {
+  name: "noodles",
+  price: 120,
+  weight: 500,
+};
+
+function getPrice(country) {
+  console.log(
+    this.name + " come from " + country,
+    "weight is equal " + this.weight + " g"
+  );
+  return this.price;
+}
+
+// 讓 getPrice function 裡面的 this 指定到 food object
+let newFunction = getPrice.bind(food);
+console.log(newFunction("JP"));
+
+// noodles come from TW weight is equal 500 g
+getPrice.call(food, "TW");
+
+getPrice.apply(food, ["TW"]);
