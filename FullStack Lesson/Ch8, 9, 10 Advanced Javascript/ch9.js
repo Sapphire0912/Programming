@@ -207,9 +207,167 @@ function getPrice(country) {
 
 // 讓 getPrice function 裡面的 this 指定到 food object
 let newFunction = getPrice.bind(food);
-console.log(newFunction("JP"));
+// console.log(newFunction("JP"));
 
 // noodles come from TW weight is equal 500 g
-getPrice.call(food, "TW");
+// getPrice.call(food, "TW");
 
-getPrice.apply(food, ["TW"]);
+// getPrice.apply(food, ["TW"]);
+
+// Constructor function Inheritance
+// function Info(name, age) {
+//   this.name = name;
+//   this.age = age;
+// }
+
+// Info.prototype.sayHi = function () {
+//   console.log(this.name + " 說你好");
+// };
+
+// function Student(name, age, major, grade) {
+//   // Setting 1
+//   Info.call(this, name, age);
+//   this.major = major;
+//   this.grade = grade;
+//   // 但沒辦法使用 sayHi() method
+// }
+// // Setting 2
+// Student.prototype = Object.create(Info.prototype);
+// // 其餘需要新增 prototype 的東西都必須放在上面那行的下方
+// Student.prototype.study = function () {
+//   console.log(this.name + " 正在努力讀 " + this.major);
+// };
+
+// let lily = new Student("Lily", 18, "English", "A+");
+// console.log(lily.name, lily.age, lily.major, lily.grade);
+// lily.sayHi();
+// lily.study();
+
+// // 將下面的程式碼改成 class 寫法
+// function Student(name, age, major, grade) {
+//   this.name = name;
+//   this.age = age;
+//   this.major = major;
+//   this.grade = grade;
+// }
+
+// Student.prototype.sayHi = function () {
+//   console.log(this.name + " 說你好");
+// };
+
+// class 語法
+// class Student {
+//   constructor(name, age, major) {
+//     this.name = name;
+//     this.age = age;
+//     this.major = major;
+//     this.grade = grade;
+//   }
+//   sayHi() {
+//     console.log(this.name + " 說你好");
+//   }
+// }
+
+// 將上面 Info 和 Student 的程式碼換成 class 寫法
+// class Info {
+//   constructor(name, age) {
+//     this.name = name;
+//     this.age = age;
+//   }
+//   sayHi() {
+//     console.log(this.name + " 說你好");
+//   }
+// }
+
+// class Student extends Info {
+//   constructor(name, age, major, grade) {
+//     super(name, age); // 會繼承父類別的屬性和方法
+//     this.major = major;
+//     this.grade = grade;
+//   }
+//   study() {
+//     console.log(this.name + " 正在努力讀 " + this.major);
+//   }
+// }
+
+// let lily = new Student("Lily", 18, "English", "A+");
+// console.log(lily.name, lily.age, lily.major, lily.grade);
+// lily.sayHi();
+// lily.study();
+
+// 展示 static 關鍵字
+// function Student(name, age, major) {
+//   this.name = name;
+//   this.age = age;
+//   this.major = major;
+// }
+// Student.exampleProperty = 10;
+// Student.exampleFunction = function () {
+//   console.log("這是一個沒有特別功能的 funciton");
+// };
+// Student.prototype.sayHi = function () {
+//   console.log(this.name + " 說你好");
+// };
+
+// let ruby = new Student("Ruby", 25, "Math");
+// ruby.sayHi();
+// ruby.exampleFunction(); // TypeError: ruby.exampleFunction is not a function
+
+// class 寫法
+// class Student {
+//   constructor(name, age, major) {
+//     this.name = name;
+//     this.age = age;
+//     this.major = major;
+//   }
+//   sayHi() {
+//     console.log(this.name + " 說你好");
+//   }
+//   static exampleProperty = 10;
+//   static exampleFunction() {
+//     console.log("這是一個沒有特別功能的 funciton");
+//   }
+// }
+// let ruby = new Student("Ruby", 25, "Math");
+// ruby.sayHi();
+// ruby.exampleFunction(); // TypeError: ruby.exampleFunction is not a function
+// Student.exampleFunction();
+// 靜態方法, 屬性 是屬於物件自身的, 並不是給 class 創建出的物件使用
+
+// class example
+class Circle {
+  static allCircles = [];
+
+  constructor(radius) {
+    this.radius = radius;
+    Circle.allCircles.push(this);
+  }
+  getArea() {
+    return Math.PI * this.radius ** 2;
+  }
+
+  getPerimeter() {
+    return Math.PI * 2 * this.radius;
+  }
+
+  // static attribute
+  static getAreaFormula = "圓面積公式: pi * r * r";
+
+  // static method
+  static getAllCircleAreaTotal() {
+    let total = 0;
+    this.allCircles.forEach((circle) => {
+      total += circle.getArea();
+    });
+    return total;
+  }
+}
+
+let c1 = new Circle(5);
+let c2 = new Circle(10);
+let c3 = new Circle(15);
+// console.log(Circle.getAreaFormula);
+
+console.log(c1.getArea());
+console.log(c1.getPerimeter());
+console.log(Circle.getAllCircleAreaTotal());
