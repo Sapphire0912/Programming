@@ -13,6 +13,7 @@ let ground_x = 100;
 let ground_y = 500;
 let ground_h = 5;
 let brickArray = [];
+let count = 0;
 
 class Brick {
   constructor(x, y) {
@@ -20,12 +21,22 @@ class Brick {
     this.y = y;
     this.width = 50;
     this.height = 50;
+    this.visible = true;
     brickArray.push(this);
   }
 
   drawBrick() {
     ctx.fillStyle = "lightgreen";
     ctx.fillRect(this.x, this.y, this.width, this.height);
+  }
+
+  touchingBall(ballX, ballY) {
+    return (
+      ballX >= this.x - radius &&
+      ballX <= this.x + this.width + radius &&
+      ballY <= this.y + this.height + radius &&
+      ballY >= this.y - radius
+    );
   }
 }
 
@@ -34,7 +45,7 @@ function getRandomArbitrary(min, max) {
   return min + Math.floor(Math.random() * (max - min));
 }
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 20; i++) {
   new Brick(getRandomArbitrary(0, 950), getRandomArbitrary(0, 450));
 }
 
@@ -44,6 +55,27 @@ canvas.addEventListener("mousemove", (e) => {
 });
 
 function drawCircle() {
+  // 確認球是否有打到磚塊
+  brickArray.forEach((brick, index) => {
+    if (brick.visible && brick.touchingBall(circle_x, circle_y)) {
+      // 優化系統效能
+      count++;
+      brick.visible = false;
+
+      // 改變 x, y 方向速度, 並且將 brick 從 brickArray 移除
+      if (circle_y >= brick.y + brick.height || circle_y <= brick.y) {
+        // 球從上下方向撞到磚塊
+        ySpeed *= -1;
+      } else if (circle_x <= brick.x || circle_x >= brick.x + brick.width) {
+        xSpeed *= -1;
+      }
+      //   brickArray.splice(index, 1); // O(n)
+      if (count == 20) {
+        alert("遊戲結束");
+        clearInterval(game);
+      }
+    }
+  });
   // 確認球有沒有碰到板子
   if (
     circle_x + radius >= ground_x &&
@@ -97,7 +129,9 @@ function drawCircle() {
 
   // 繪製磚塊
   brickArray.forEach((brick) => {
-    brick.drawBrick();
+    if (brick.visible) {
+      brick.drawBrick();
+    }
   });
 }
 
