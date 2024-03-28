@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops</title>
+</head>
+<body>
+    <script>
+        var x = 0;
+        while(x < 101){
+            // document.write(x + "<br/>");
+            x++;
+        }
+        // document.write("#############<br>");
+
+        var i = 0;
+        do{
+            // document.write(i + "<br/>");
+            i++;
+        }while(i < 101);
+
+        // document.write("***************<br>");
+        for(var k = 100; k >= 0; k-=5){
+            // document.write(k + "<br/>");
+        }
+
+        var ui = "";
+        while(ui != "xxx"){
+            ui = prompt("Enter a name of one of your favorite bands. Enter xxx to stop");
+            if (ui != "xxx"){
+                document.write(ui + "<br/>");
+            }
+        }
+    </script>
+</body>
+</html>

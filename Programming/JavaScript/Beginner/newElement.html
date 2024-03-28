@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Elements</title>
+</head>
+<body>
+    <style>
+        .red{
+            color:red;
+        }
+        article{
+            border: 1px solid black;
+            padding: 15px;
+            border-radius: 15px;
+            background-color: darkslategray;
+            color:white;
+        }
+    </style>
+    <script>
+        const heading = document.createElement("h1");
+        heading.innerText = "This is a dynamic heading";
+        console.log(heading);
+
+        document.body.appendChild(heading);
+        heading.setAttribute("class", "red");
+
+        const article = document.createElement("article");
+        const articleHeading = document.createElement("h2");
+
+        articleHeading.innerText = "Article Headline";
+        const articleText = document.createElement("p");
+        articleText.innerText = `any context...`;
+        article.appendChild(articleHeading);
+        article.appendChild(articleText);
+        document.body.appendChild(article);
+    </script>
+</body>
+</html>

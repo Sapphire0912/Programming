@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 08</title>
+</head>
+<body>
+    <script>
+        let poem = "With Rue My Heart Is Laden<br/> \
+        For Golden Friends I Had<br/> \
+        For Many a Rose-Lipped Maiden<br/> \
+        And Many a Light-Foot Lad<br/><br/> \
+        By Brooks To Broad For Leaping<br/> \
+        The Light-Foot Boys are Laid<br/> \
+        The Rose-Lipped Girls are Sleeping<br/> \
+        In Fields Where Roses Fade<br/>"
+
+        document.write(poem);
+        document.write("*******************************<br>");
+
+        let string = "";
+        let vowel = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+        for(let i = 0; i < poem.length; i++){
+            if (vowel.indexOf(poem[i]) != -1){
+                string += 'X';
+            }
+            else{
+                string = string + poem[i];
+            }
+        }
+
+        document.write(string);
+        document.write("*******************************<br>");
+
+        let s = "tennis,ice hockey,baseball,basketball,football,soccer,bowling";
+        let lst = s.split(',');
+        lst.sort();
+
+        for (let k = 0; k < lst.length; k++){
+            document.write(lst[k]);
+            document.write("<br>");
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark's Video</title>
+</head>
+<body>
+    <button id="btnGetVideos">GetVideo</div>
+    <div id="result"></div>
+    <script>
+        window.onload = () => {
+            document.getElementById('btnGetVideos').addEventListener('click', getVideos);
+        }
+
+        getVideos = () => {
+            document.getElementById("result").innerHTML = "";
+            var url = "https://mlassoff.github.io/syndicatedvideos/";
+            fetch(url).then(function(response){
+                return response.text();
+            }).then(function(videos){
+                displayPlayer(videos);
+            });
+        }
+
+        displayPlayer = (videos) => {
+            // console.log(videos);
+            parser = new DOMParser(); // 利用 DOMParser 幫助我們使用 js 解析 XML 資料
+            let xmlDoc = parser.parseFromString(videos, "text/xml");
+            // console.log(xmlDoc);
+
+            // object.getElementsByTagName("tag") 回傳一個 array
+            let items = xmlDoc.getElementsByTagName("item");
+            // console.log(items);
+
+            for (let x = 0; x < items.length; x++){
+                // console.log(items[x]);
+                const title = items[x].getElementsByTagName("title")[0].firstChild.nodeValue;
+                // console.log(title);
+                const description = items[x].getElementsByTagName("description")[0].firstChild.nodeValue;
+                const media = items[x].getElementsByTagName("media:content")[0].getElementsByTagName("media:thumbnail")[0].getAttribute("url");
+                const videoURL = items[x].getElementsByTagName("enclosure")[0].getAttribute("url");
+                console.log(videoURL);
+
+                // debug: 課程資料中, 有的圖片已經消失, 或沒有圖片 需要做異常處理(但有權限問題)
+                // fetch(media).then(function(response){
+                //    console.log(response.status);
+                // })
+                buildCard(title, description, media, videoURL);
+            }
+        }
+
+        buildCard = (title, description, media, videoURL) => {
+            const div = document.createElement('div');
+            div.className = "card";
+
+            const img = document.createElement('img');
+            img.setAttribute("src", media);
+
+            const vidTitle = document.createElement('h2');
+            const titleText = document.createTextNode(title);
+            vidTitle.appendChild(titleText);
+            
+            const vidDescription = document.createElement('p');
+            const descriptionText = document.createTextNode(description);
+            vidDescription.appendChild(descriptionText);
+
+            const button = document.createElement('button');
+            button.innerHTML = "Play";
+            button.onclick = () => {
+                document.getElementById("videoPlayer").url = videoURL;
+                document.getElementById("videoPlayer").play();
+                document.getElementById('vidTitle').innerHTML = title;
+                document.getElementById('videoPlayer').style.display = "block";
+            }
+
+            div.appendChild(button);
+            //console.log(div);
+            document.getElementById('result').appendChild(div);
+        }
+    </script>
+    <style>
+        #result{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .card{
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 30px;
+            flex: 0 1 30%;
+            font-family: Arial, Helvetica, sans-serif;
+            box-shadow: 5px 5px 9px -1px rgba(0, 0, 0, 0.56);
+        }
+        .card img{
+            width: 100%;
+        }
+        button{
+            width: 100%;
+            height: 40px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        video{
+            width: 100%;
+            display: none;
+        }
+        output{
+            font-weight: bold;
+        }
+    </style>
+</body>
+</html>

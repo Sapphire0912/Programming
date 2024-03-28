@@ -1,0 +1,11 @@
+/* selector */
+h1 {
+  /* 下面為 CSS 顏色設定方式 */
+  /* color: red; */
+  /* color: rgb(100, 177, 200); */
+  /* color: rgba(100, 177, 200, 0.7); */
+  color: #0ff0f0;
+}
+h2 {
+  color: green;
+}

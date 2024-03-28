@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio</title>
+</head>
+<body>
+    <button id="btnPlay">Play</button>
+    <button id="btnPause">Pause</button>
+    <button id="btnStop">Stop</button>
+    <button id="btnVolUp">Volume Up</button>
+    <button id="btnVolDown">Volume Down</button>
+    <button id="btnChangeSong">Change Song</button>
+
+    <script>
+        const btnPlay = document.getElementById("btnPlay");
+        const btnStop = document.getElementById("btnStop");
+        const btnPause = document.getElementById("btnPause");
+        const btnVolUp = document.getElementById("btnVolUp");
+        const btnVolDown = document.getElementById("btnVolDown");
+        const btnChangeSong = document.getElementById("btnChangeSong");
+
+        const audioPlayer = new Audio("Sugar Glass.mp3");
+        // 點下 play 按鈕會開始撥放 Sugar Glass.mp3 的音樂
+        btnPlay.addEventListener("click", (e) => {
+            let buttonClicked = e.target.id;
+            if(buttonClicked == "btnPlay"){
+                audioPlayer.play();
+            }
+            console.log(e);
+        });
+
+        // 點下 Pause 按鈕會停止撥放音樂
+        btnPause.addEventListener("click", (e) => {
+            audioPlayer.pause();
+        });
+
+        // 點下 Stop 按鈕會停止撥放音樂
+        btnStop.addEventListener("click", (e) => {
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0; // 當按下 Stop 按鈕後, 讓音樂時間軸回到起始點
+        });
+
+        // 點下 Volume Up 按鈕會增加音量
+        btnVolUp.addEventListener("click", (e) => {
+            audioPlayer.volume += .1; // 增加 10%
+        });
+
+        // 點下 Volume Up 按鈕會降低音量
+        btnVolDown.addEventListener("click", (e) => {
+            audioPlayer.volume -= .1; // 降低 10%
+        });
+
+        // 點下 Change Song 按鈕會改變音樂
+        btnChangeSong.addEventListener("click", (e) => {
+            audioPlayer.src = "Electric Eel.mp3";
+        });
+    </script>
+</body>
+</html>

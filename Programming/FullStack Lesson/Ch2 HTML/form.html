@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>故宮問卷調查</title>
+  </head>
+  <body>
+    <form action="">
+      <!-- 
+        <label> 裡的 for 屬性設定為一個 string, 
+            若該 string 和 input 的 id 對應上, 可以在 browser 中
+            點擊 label 設定的文字位置, 則 input 的文字輸入框就會被反白, 
+            或是自動引導(聚焦)到該輸入框的位置
+        -->
+      <label for="名字">姓名：</label>
+      <!-- 
+        <input> 的 屬性設定：
+        type 設定為 text 可以讓使用者輸入文字
+        設定 name 屬性, 可以將輸入框裡的資料送給 action 指定的位置
+            (從 url 可以看見表單送出前後的差異)
+        -->
+      <input
+        id="名字"
+        type="text"
+        name="姓名"
+        minlength="5"
+        maxlength="50"
+        placeholder="請輸入真實姓名"
+      />
+      <!-- 
+        <button> 裡的 type 屬性設定為 submit：
+            可以將 form 裡的資料提交到 action 屬性指定的位置
+        -->
+      <!-- 設定性別(較不好的做法) checkbox 會有複選的問題存在 -->
+      <!-- <input id="male" type="checkbox" name="gender" value="male" />
+      <label for="male">男性</label>
+      <input id="female" type="checkbox" name="gender" value="female" />
+      <label for="female">女性</label>
+      <input id="other" type="checkbox" name="gender" value="other" />
+      <label for="other">其他</label> -->
+
+      <!-- 性別設定較好的做法 radio 在相同的集合裡的選項(name設定相同的為一個集合)只能選擇一個 -->
+      <!-- <input id="male" type="radio" name="gender" value="male" required /> -->
+      <!-- checked 給予預設圈選的值 -->
+      <!-- <label for="male">男性</label>
+      <input id="female" type="radio" name="gender" value="female" />
+      <label for="female">女性</label>
+      <input id="other" type="radio" name="gender" value="other" />
+      <label for="other">其他</label> -->
+
+      <!-- 用來頁面的換行使用 -->
+      <hr />
+
+      <!-- 性別設定的其他方法 -->
+      <label for="gender">性別:</label>
+      <select name="gender" id="gender" required>
+        <option>請選擇</option>
+        <option value="male">男性</option>
+        <option value="female">女性</option>
+        <option value="other">其他</option>
+      </select>
+
+      <hr />
+
+      <label for="信箱">信箱:</label>
+      <input type="email" id="信箱" name="email" required />
+      <!-- required 屬性是要求使用者必須填寫此欄位的資料 -->
+
+      <hr />
+
+      <label for="password">密碼:</label>
+      <input
+        type="password"
+        id="password"
+        minlength="8"
+        maxlength="40"
+        placeholder="請輸入至少8個字元的密碼"
+      />
+      <!-- 
+        minlength, maxlength 可以設定 type 屬性類型的最小和最大長度限制 
+        placeholder 可以在 input 框顯示提示訊息 -->
+      <input type="checkbox" id="showPW" onclick="showPassword" />Show Password
+
+      <hr />
+
+      <label for="年齡">年齡:</label>
+      <!-- 0<input type="range" min="0" max="125" step="1" id="年齡" name="Age" />125 -->
+
+      <input
+        type="number"
+        id="年齡"
+        name="age"
+        value="18"
+        min="0"
+        max="125"
+        step="0.01"
+      />
+      <!-- 
+        value 設定的值是給使用者的預設值, value 所有的 type 都可以設定 
+        min, max 是設定使用者可以調整年齡值的上下限 
+        step 是設定每按上下數的按鈕後, 增加或減少的大小
+      -->
+      <hr />
+
+      <input id="電子報" type="checkbox" checked name="電子報" value="訂閱" />
+      <label for="電子報">訂閱電子報</label>
+      <!-- 
+        value 是設定 name 後面的值顯示的內容 (從 url 可看出差異) 
+        在 checkbox 裡面的 checked 屬性, 可以更改 checkbox 的框
+        是否為打勾狀態
+      -->
+      <hr />
+
+      <label for="area">地區:</label>
+      <input list="area-list" type="text" name="area" id="area" />
+      <datalist id="area-list">
+        <option value="台北市">台北市</option>
+        <option value="新北市">新北市</option>
+        <option value="台中市">台中市</option>
+        <option value="桃園市">桃園市</option>
+        <option value="高雄市">高雄市</option>
+      </datalist>
+      <hr />
+
+      <label for="suggestion">給網站的建議:</label>
+      <textarea
+        name="suggestion"
+        id="suggestion"
+        cols="30"
+        rows="10"
+        placeholder="給網站的建議"
+      ></textarea>
+      <hr />
+
+      <!-- <button type="submit">提交表單</button> -->
+      <!-- 在 form 標籤裡面的 button type 類型一定是 submit -->
+      <button>提交表單</button>
+      <hr />
+
+      <p>Sapphire 2024@</p>
+      <!-- <input type="file" /> -->
+    </form>
+    <script>
+      let checkbox = document.querySelector("#showPW");
+      let password = document.querySelector("#password");
+
+      checkbox.addEventListener("click", () => {
+        if (password.type == "password") {
+          password.type = "text";
+        } else {
+          password.type = "password";
+        }
+      });
+    </script>
+  </body>
+</html>

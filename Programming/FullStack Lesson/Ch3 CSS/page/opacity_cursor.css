@@ -1,0 +1,7 @@
+h1 {
+  opacity: 0.4;
+}
+
+img:hover {
+  cursor: pointer;
+}

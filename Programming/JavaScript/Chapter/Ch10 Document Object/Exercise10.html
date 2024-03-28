@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 10</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" id="first" onblur="validFirst()"></td>
+            <td><span id="firstError"></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input type="text" id="last" onblur="validLast()"></td>
+            <td><span id="lastError"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" id="email" onblur="validEmail()"></td>
+            <td><span id="emailError"></td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td><input type="text" id="phone" onblur="validPhone()"></td>
+            <td><span id="phoneError"></td>
+        </tr>
+        <tr>
+            <td><input type="submit"/></td>
+        </tr>
+    </table>
+
+    <script>
+        function validFirst(){
+            let firstName = document.getElementById("first").value;
+            if (firstName != "" && firstName != null){
+                document.getElementById("firstError").innerHTML = "";
+                document.getElementById("first").style.backgroundColor = 'white';
+
+                if (firstName.length < 3){
+                    document.getElementById("firstError").innerHTML = "Reponse too short";
+                }
+            }
+            else{
+                document.getElementById("firstError").innerHTML = "Require Field";
+                document.getElementById("first").style.backgroundColor = 'red';
+            }
+        }
+
+        function validLast(){
+            let lastName = document.getElementById("first").value;
+            if (lastName != "" && lastName != null){
+                document.getElementById("lastError").innerHTML = "";
+                document.getElementById("last").style.backgroundColor = 'white';
+
+                if (lastName.length < 3){
+                    document.getElementById("lastError").innerHTML = "Reponse too short";
+                }
+            }
+            else{
+                document.getElementById("lastError").innerHTML = "Require Field";
+                document.getElementById("last").style.backgroundColor = 'red';
+            }
+        }
+
+        function validEmail(){
+            let email = document.getElementById("email").value;
+            if (email != "" && email != null){
+                document.getElementById("emailError").innerHTML = "";
+                document.getElementById("email").style.backgroundColor = 'white';
+
+                if (email.length < 3){
+                    document.getElementById("emailError").innerHTML = "Reponse too short";
+                }
+            }
+            else{
+                document.getElementById("emailError").innerHTML = "Require Field";
+                document.getElementById("email").style.backgroundColor = 'red';
+            }
+        }
+
+        function validPhone(){
+            let phone = document.getElementById("phone").value;
+            if (phone != "" && phone != null){
+                document.getElementById("phoneError").innerHTML = "";
+                document.getElementById("phone").style.backgroundColor = 'white';
+
+                if (email.length < 3){
+                    document.getElementById("phoneError").innerHTML = "Reponse too short";
+                }
+            }
+            else{
+                document.getElementById("phoneError").innerHTML = "Require Field";
+                document.getElementById("phone").style.backgroundColor = 'red';
+            }
+        }
+    </script>
+</body>
+</html>

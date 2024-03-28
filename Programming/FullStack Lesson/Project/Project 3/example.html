@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex shrink</title>
+    <meta name="author" content="Sapphire" />
+    <style>
+      div.container {
+        width: 50vw;
+        height: 300px;
+        border: 2px solid green;
+        display: flex;
+      }
+      div.item {
+        flex: 1 0 1000px;
+        border: 2px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item"></div>
+    </div>
+  </body>
+</html>

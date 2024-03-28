@@ -1,0 +1,34 @@
+Tensorflow 的 keras 裡面, fit() 方法有個回呼引數, 可以指定一串物件, 讓 keras 在訓練開始和結束時, 以及在各個 epoch 開始和結束時呼叫,
+甚至在處理各個批次之前和之後呼叫。例如: ModelCheckpoint 可在訓練期間定期儲存模型的檢查點, 預設在每個 epoch 結束時。
+
+# 建立 & 編譯完模型後
+checkpoint_cb = tf.keras.callbacks.ModelCheckpoint("my_keras_model.h5")
+history = model.fit(Xtrain, ytrain, epochs=10, callbacks=[checkpoint_cb])
+
+如果在訓練時使用驗證集, 則可以在 ModelCheckpoint(save_best_only=True), 截至目前為止效果最好的模型
+(參考: 早期停止法(EarlyStopping))
+
+最後 model = tf.keras.models.load_model("my_keras_model.h5"), 恢復模型
+
+另一種方式, 使用 EarlyStopping 方法回呼
+early_stopping_cb = tf.keras.callbacks.EarlyStopping(patience=10, restore_best_weights=True)
+history = model.fit(
+    Xtrain, ytrain, validation_data=(Xvalid, yvalid), epochs=100, callbacks=[checkpoint_cb, early_stopping_cb]
+)
+
+微調神經網路的超參數
+# 可以透過 K-fold, GridSearchCV, RandomizedSearchCV 來探索超參數的空間
+(詳情可以看 MachineLearning 的 Data Science)
+
+# 利用 function 來建構 NN Model
+def build_model(n_hidden=1, n_neurons=30, learning_rate=3e-3, input_shape=[8]):
+    model = tf.keras.models.Sequential()
+    model.add(tf.keras.layers.InputLayer(input_shape=input_shape))
+    for layer in range(n_hidden):
+        model.add(tf.keras.layers.Dense(n_neurons, activation=tf.nn.relu))
+    model.add(tf.keras.layers.Dense(1))
+    optimizer = tf.keras.optimizers.SGD(lr=learning_rate)
+    model.compile(loss='mse', optimizer=optimizer)
+    return model
+
+# 其他可以參考書上的參考連結, page.314, 315
