@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Lab 6</title>
+    <script>
+        function add()
+        {
+            var operand1 = prompt("Number 1: ");
+            var operand2 = prompt("Number 2: ");
+            var op1 = parseInt(operand1);
+            var op2 = parseInt(operand2);
+            alert(op1+" + "+ op2 + " = " + (op1+op2));
+        }
+        function subtract()
+        {
+            var operand1 = prompt("Number 1: ");
+            var operand2 = prompt("Number 2: ");
+            var op1 = parseInt(operand1);
+            var op2 = parseInt(operand2);
+            alert(op1+" - "+ op2 + " = " + (op1-op2));
+        }
+        function multiply()
+        {
+            var operand1 = prompt("Number 1: ");
+            var operand2 = prompt("Number 2: ");
+            var op1 = parseInt(operand1);
+            var op2 = parseInt(operand2);
+            alert(op1+" * "+ op2 + " = " + (op1*op2));
+        }
+        function divide()
+        {
+            var operand1 = prompt("Number 1: ");
+            var operand2 = prompt("Number 2: ");
+            var op1 = parseInt(operand1);
+            var op2 = parseInt(operand2);
+            alert(op1+" / "+ op2 + " = " + (op1/op2));
+        }
+        
+        function mathProb()
+        {
+            
+            var operand1 = prompt("Number 1: ");
+            var operand2 = prompt("Number 2: ");
+            var operation = prompt("Math symbol: ");
+            var op1 = parseInt(operand1);
+            var op2 = parseInt(operand2); 
+            
+            switch(operation)
+            {
+                case '+':
+                    alert(op1 + " " + operation+ " " + op2 + " = " + (op1+op2));
+                    break;
+                case '-':
+                    alert(op1 + " " + operation + " " + op2 + " = " + (op1-op2));
+                    break;
+                case '*':
+                    alert(op1 + " " + operation + " " + op2 + " = " + (op1*op2));
+                    break;
+                case '/':
+                    alert(op1 + " " + operation + " " + op2 + " = " + (op1/op2));
+                    break;
+                default:
+                    alert("Not Recognized");
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="Add" onclick="add()" id="addition"/>
+    <input type="button" value="Subtract" onclick="subtract()" id="subtraction"/>
+    <input type="button" value ="Multply"  onclick="multiply()" id="multiplication"/>
+    <input type="button" value="Divide" onclick="divide()" id="division"/><br/><br/>
+    <input type="button" value="Math Prob" onclick="mathProb()"/>
+</body>
+</html>
