@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express(); // 代表是 server 的意思
 
+// middleware
+app.use(express.json());
+app.use(express.urlencoded({ extends: true }));
+
 // HTTP request: GET, POST, PUT, DELETE
 app.get("/", (req, res) => {
   res.send("歡迎來到網站首頁");
@@ -33,8 +37,37 @@ app.get("/redirect", (req, res) => {
   res.redirect("/actualExample");
 });
 
+app.get("/fruit", (req, res) => {
+  res.send("歡迎來到水果頁面");
+});
+
+app.get("/fruit/:someFruit", (req, res) => {
+  // console.log(req.params.someFruit);
+  res.send("歡迎來到" + req.params.someFruit + "頁面");
+});
+
 app.get("/actualExample", (req, res) => {
   res.send("真正的 resourse 在這裡");
+});
+
+// app.get("/formHandling", (req, res) => {
+//   // console.log(req.query); // 會得到使用者表單的內容
+//   res.send(
+//     "伺服器已經收到表單。你所提交的資料為。名稱: " +
+//       req.query.name +
+//       ". 以及年齡為: " +
+//       req.query.age
+//   );
+// });
+
+app.post("/formHandling", (req, res) => {
+  // console.log(req.body); // 獲取被 middleware 處理過的 form 內容
+  let { email, password } = req.body;
+  res.send("Your email: " + email + ". your password: " + password);
+});
+
+app.get("*", (req, res) => {
+  res.send("你找的頁面不存在");
 });
 
 app.listen(3000, () => {
