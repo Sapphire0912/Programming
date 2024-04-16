@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta name="author" content="Sapphire" />
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <h1>這是一個 EJS 製作的頁面</h1>
+    <h2>這是一個<%= name %>製作的頁面</h2>
+    <%- myString %> <% for(let i = 0; i < 3; i++){%>
+    <h5><%= i %></h5>
+    <% } %> <%- include("partials/footer") %>
+
+    <form action="/form/ejsForm" method="GET">
+      <label for="name">姓名：</label>
+      <input type="text" name="name" id="name" />
+      <label for="age">年齡</label>
+      <input type="number" name="age" id="age" />
+      <button>Submit</button>
+    </form>
+
+    <table>
+      <tr>
+        <th>名稱</th>
+        <th>評價</th>
+        <th>熱門程度</th>
+        <th>流行度</th>
+      </tr>
+
+      <% languages.forEach(lang => { %>
+      <tr>
+        <td><%= lang.name %></td>
+        <td><%= lang.rating %></td>
+        <td><%= lang.popularity %></td>
+        <td><%= lang.trending %></td>
+      </tr>
+      <% }); %>
+    </table>
+  </body>
+</html>
