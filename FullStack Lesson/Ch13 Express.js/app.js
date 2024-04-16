@@ -4,6 +4,17 @@ const app = express(); // 代表是 server 的意思
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extends: true }));
+app.use(express.static("public"));
+
+// app.use((req, res, next) => {
+//   console.log("正在經過 middleware");
+//   next();
+// });
+
+// app.use((req, res, next) => {
+//   console.log("正在經過第二個 middleware");
+//   next();
+// });
 
 // HTTP request: GET, POST, PUT, DELETE
 app.get("/", (req, res) => {
@@ -23,6 +34,10 @@ app.get("/example", (req, res) => {
 app.get("/sendFile", (req, res) => {
   // sendFile(path) 必須是絕對路徑
   res.sendFile(__dirname + "/example.html");
+});
+
+app.get("/middlewareUse", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
 });
 
 app.get("/json", (req, res) => {
@@ -66,8 +81,14 @@ app.post("/formHandling", (req, res) => {
   res.send("Your email: " + email + ". your password: " + password);
 });
 
+// app.get("*", (req, res) => {
+//   res.send("你找的頁面不存在");
+// });
+
 app.get("*", (req, res) => {
-  res.send("你找的頁面不存在");
+  // res.status(404); // return res object, 它屬於 method chaining
+  // res.send("錯誤頁面");
+  res.status(404).send("錯誤頁面");
 });
 
 app.listen(3000, () => {
