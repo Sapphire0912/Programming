@@ -11,6 +11,7 @@ function isPrime(n) {
 
 const random = (max) => Math.floor(Math.random() * max);
 
+// 只要 generatePrimes 大量的執行，就會產生頁面凍結問題(synchronous 情形)
 function generatePrimes(quota) {
   const primes = [];
   while (primes.length < quota) {
