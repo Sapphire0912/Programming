@@ -16,24 +16,41 @@ mongoose
 
 // 連結 mongodb 的 collection 操作
 const studentSchema = new Schema({
-  name: String,
-  age: { type: Number, min: [0, "age is not less than 0."] },
-  major: String,
+  name: { type: String, required: true, maxlength: 25 },
+  age: { type: Number, min: [0, "age is not less than 0."], default: 18 },
+  //   major: { type: String, required: [true, "每個學生都至少要選一個主修"] },
+  major: {
+    type: String,
+    required: function () {
+      return this.age >= 20;
+    },
+    enum: ["Chemistry", "Computer Science", "Mathematics", "Arts"],
+  },
 });
 
 const Student = mongoose.model("Student", studentSchema);
-Student.findOneAndUpdate(
-  { name: "Iris" },
-  { age: 24 },
-  { runValidator: true, new: true }
-)
-  .then((doc) => {
-    console.log("new: true, the doc is after update data");
-    console.log(doc);
-  })
-  .catch((e) => {
-    console.log(e);
-  });
+// Student.deleteOne({ age: { $lt: 24 } })
+//   .exec()
+//   .then((msg) => {
+//     console.log(msg);
+//   })
+//   .catch((e) => {
+//     console.log(e);
+//   });
+
+// 使用 findOneAndUpdate()
+// Student.findOneAndUpdate(
+//   { name: "Iris" },
+//   { age: 24 },
+//   { runValidator: true, new: true }
+// )
+//   .then((doc) => {
+//     console.log("new: true, the doc is after update data");
+//     console.log(doc);
+//   })
+//   .catch((e) => {
+//     console.log(e);
+//   });
 
 // const newStudent = new Student({
 //   name: "Mary",
