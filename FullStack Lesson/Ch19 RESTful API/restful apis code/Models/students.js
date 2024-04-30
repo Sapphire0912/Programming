@@ -3,6 +3,12 @@ const { Schema } = mongoose;
 
 // 建立 Schema
 const studentSchema = new Schema({
+  _id: {
+    type: String,
+    default: function () {
+      return this.name;
+    },
+  },
   name: { type: String, minlength: 2, maxlength: 25, required: true },
   age: {
     type: Number,
@@ -37,4 +43,12 @@ const studentSchema = new Schema({
 // 創建一個 collection
 const Students = mongoose.model("Student", studentSchema);
 
+// 新增第一筆學生資料
+// const newStudent = new Students({
+//   name: "Sapphire",
+//   age: 23,
+//   major: "Computer Science",
+//   scholarship: { merit: 3000, other: 10000 },
+// });
+// newStudent.save();
 module.exports = Students; // review: 這是 express.js 的作法
