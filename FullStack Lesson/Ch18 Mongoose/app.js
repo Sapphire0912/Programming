@@ -15,20 +15,56 @@ mongoose
   });
 
 // 連結 mongodb 的 collection 操作
-const studentSchema = new Schema({
-  name: { type: String, required: true, maxlength: 25 },
-  age: { type: Number, min: [0, "age is not less than 0."], default: 18 },
-  //   major: { type: String, required: [true, "每個學生都至少要選一個主修"] },
-  major: {
-    type: String,
-    required: function () {
-      return this.age >= 20;
+const studentSchema = new Schema(
+  {
+    name: { type: String, required: true, maxlength: 25 },
+    age: { type: Number, min: [0, "age is not less than 0."], default: 18 },
+    //   major: { type: String, required: [true, "每個學生都至少要選一個主修"] },
+    major: {
+      type: String,
+      required: function () {
+        return this.age >= 20;
+      },
+      enum: ["Chemistry", "Computer Science", "Mathematics", "Arts"],
     },
-    enum: ["Chemistry", "Computer Science", "Mathematics", "Arts"],
   },
-});
+  {
+    methods: {
+      printMajor() {
+        return this.major;
+      },
+    },
+    statics: {
+      findMajor(major) {
+        return this.find({ major: major }).exec();
+      },
+    },
+  }
+);
+
+// 第二種方式
+studentSchema.methods.studentAge = function () {
+  return this.age;
+};
 
 const Student = mongoose.model("Student", studentSchema);
+Student.findMajor("Chemistry")
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((e) => {
+    console.log(e);
+  });
+
+// Student.find({})
+//   .exec()
+//   .then((arr) => {
+//     arr.forEach((student) => {
+//       console.log(student.name + " 的主修科目為: " + student.printMajor());
+//       console.log(student.name + " 的年紀為: " + student.studentAge());
+//     });
+//   });
+
 // Student.deleteOne({ age: { $lt: 24 } })
 //   .exec()
 //   .then((msg) => {
