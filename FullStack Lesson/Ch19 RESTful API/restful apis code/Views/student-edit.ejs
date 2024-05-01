@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修改學生資料頁面</title>
+    <meta name="author" content="Sapphire" />
+  </head>
+  <body>
+    <form action="/students/<%= foundStudent._id %>?_method=PUT" method="POST">
+      <label for="name">姓名：</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        value="<%= foundStudent.name %>"
+      /><br />
+      <label for="age">年齡：</label>
+      <input
+        type="Number"
+        name="age"
+        id="age"
+        min="18"
+        value="<%= foundStudent.age %>"
+      /><br />
+      <label for="major">主修：</label>
+      <select name="major">
+        <option value="Chemistry" <%= foundStudent.major === "Chemistry" ? "selected" : "" %>>Chemistry</option>
+        <option value="Computer Science" <%= foundStudent.major === "Computer Science" ? "selected" : "" %>>Computer Science</option>
+        <option value="Mathematics" <%= foundStudent.major === "Mathematics" ? "selected" : "" %>>Mathematics</option>
+        <option value="Arts" <%= foundStudent.major === "Arts" ? "selected" : "" %>>Arts</option>
+        <option value="ML/DL" <%= foundStudent.major === "ML/DL" ? "selected" : "" %>>ML/DL</option>
+        <option value="Operating System" <%= foundStudent.major === "Operating System" ? "selected" : "" %>>Operating System</option>
+        <option value="Algorithm" <%= foundStudent.major === "Algorithm" ? "selected" : "" %>>Algorithm</option>
+      </select>
+      
+      <br />
+      <label for="merit">merit 獎學金</label>
+      <input
+        type="Number"
+        name="merit"
+        id="merit"
+        min="0"
+        value="<%= foundStudent.scholarship.merit %>"
+      /><br />
+      <label for="other">other 獎學金</label>
+      <input
+        type="Number"
+        name="other"
+        id="other"
+        min="0"
+        value="<%= foundStudent.scholarship.other %>"
+      /><br />
+      <button type="submit">更新學生資料</button>
+    </form>
+  </body>
+</html>

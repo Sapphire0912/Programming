@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= foundStudent.name %> 的頁面</title>
+    <title>新增學生資料</title>
     <meta name="author" content="Sapphire" />
     <style>
       table,
@@ -13,36 +13,41 @@
         border-collapse: collapse;
         padding: 0.5rem;
       }
+      a {
+        display: block;
+        padding: 0.5rem 0rem;
+      }
     </style>
   </head>
   <body>
+    <h1>成功新增學生</h1>
+    <p>以下為成功新增的資料：</p>
     <table>
       <tr>
         <td>學生 ID</td>
-        <td><%= foundStudent._id %></td>
+        <td><%= savedStudent._id %></td>
       </tr>
       <tr>
         <td>名稱</td>
-        <td><%= foundStudent.name %></td>
+        <td><%= savedStudent.name %></td>
       </tr>
       <tr>
         <td>年齡</td>
-        <td><%= foundStudent.age %></td>
+        <td><%= savedStudent.age %></td>
       </tr>
       <tr>
         <td>主修</td>
-        <td><%= foundStudent.major %></td>
+        <td><%= savedStudent.major %></td>
       </tr>
       <tr>
         <td>merit 獎學金</td>
-        <td><%= foundStudent.scholarship.merit %></td>
+        <td><%= savedStudent.scholarship.merit %></td>
       </tr>
       <tr>
         <td>other 獎學金</td>
-        <td><%= foundStudent.scholarship.other %></td>
+        <td><%= savedStudent.scholarship.other %></td>
       </tr>
     </table>
     <a href="/students/">回到首頁</a>
-    <a href="/students/<%= foundStudent._id %>/edit">更新學生資料</a>
   </body>
 </html>

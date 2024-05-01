@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>新增學生資料</title>
+    <meta name="author" content="Sapphire" />
+  </head>
+  <body>
+    <form action="/students" method="POST">
+      <label for="name">姓名：</label>
+      <input type="text" name="name" id="name" /><br />
+      <label for="age">年齡：</label>
+      <input type="Number" name="age" id="age" min="18" /><br />
+      <label for="major">主修：</label>
+      <select name="major">
+        <option value="Chemistry">Chemistry</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Mathematics">Mathematics</option>
+        <option value="Arts">Arts</option>
+        <option value="ML/DL">ML/DL</option>
+        <option value="Operating System">Operating System</option>
+        <option value="Algorithm">Algorithm</option>
+      </select>
+      <br />
+      <label for="merit">merit 獎學金</label>
+      <input type="Number" name="merit" id="merit" min="0" /><br />
+      <label for="other">other 獎學金</label>
+      <input type="Number" name="other" id="other" min="0" /><br />
+      <button type="submit">新增學生</button>
+    </form>
+  </body>
+</html>
