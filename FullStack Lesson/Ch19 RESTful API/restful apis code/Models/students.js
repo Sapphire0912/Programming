@@ -45,10 +45,10 @@ const Students = mongoose.model("Student", studentSchema);
 
 // 新增第一筆學生資料
 // const newStudent = new Students({
-//   name: "Sapphire",
-//   age: 23,
-//   major: "Computer Science",
-//   scholarship: { merit: 3000, other: 10000 },
+//   name: "Lily",
+//   age: 26,
+//   major: "Arts",
+//   scholarship: { merit: 2500, other: 3500 },
 // });
 // newStudent.save();
 module.exports = Students; // review: 這是 express.js 的作法

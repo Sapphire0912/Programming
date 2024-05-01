@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+// const cors = require("cors");
 const mongoose = require("mongoose");
 const Student = require("./Models/students");
 
@@ -16,11 +17,15 @@ mongoose
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// app.use(cors());
 
 app.get("/students", async (req, res) => {
   try {
     let studentsData = await Student.find({}).exec();
-    return res.send(studentsData);
+    // 利用 API 來串接資料庫
+    // return res.send(studentsData);
+    // 利用網頁來回傳資訊
+    return res.render("students", { studentsData });
   } catch (e) {
     return res.status(500).send("尋找資料時發生錯誤!");
   }
@@ -32,14 +37,23 @@ app.get("/students/:_id", async (req, res) => {
     let foundStudent = await Student.findOne({ _id }).exec();
     // console.log(foundStudent == null);
     if (foundStudent != null) {
-      return res.send(foundStudent);
+      // 利用 API 來串接資料庫
+      // return res.send(foundStudent);
+      // 利用網頁來回傳資訊
+      return res.render("students-page", { foundStudent });
     } else {
-      return res.send(
-        "沒有名為 " + _id + " 學生的資料, 請確認名稱是否輸入正確"
-      );
+      // return res.send(
+      //   "沒有名為 " + _id + " 學生的資料, 請確認名稱是否輸入正確"
+      // );
+      return res.render("student-not-found", {
+        msg: "沒有名為 " + _id + " 學生的資料, 請確認名稱是否輸入正確",
+      });
     }
   } catch (e) {
-    return res.status(500).send("尋找資料時發生錯誤!");
+    // return res.status(500).send("尋找資料時發生錯誤!");
+    return res
+      .status(400)
+      .render("student-not-found", { msg: "尋找資料時發生錯誤!" });
   }
 });
 
