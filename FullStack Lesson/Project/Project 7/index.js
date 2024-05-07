@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const authRoutes = require("./routes/auth-route");
 const profileRoutes = require("./routes/profile-route");
+const flash = require("connect-flash");
 
 dotenv.config();
 app = express();
@@ -34,6 +35,13 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  next();
+});
 
 // 處理相應的 route
 app.use("/auth", authRoutes);

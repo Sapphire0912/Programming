@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const Post = require("../models/post_model");
 const authCheck = (req, res, next) => {
   if (req.isAuthenticated()) {
     next();
@@ -7,10 +8,31 @@ const authCheck = (req, res, next) => {
   }
 };
 
-router.get("/", authCheck, (req, res) => {
+router.get("/", authCheck, async (req, res) => {
   // 在 deserializeUser() 內部, 已經設定好 req.user 是 user 在 DB 內部的 data
   console.log("進入 /profile ...");
-  return res.render("profile", { user: req.user });
+  let postFound = await Post.find({ author: req.user._id });
+  return res.render("profile", { user: req.user, posts: postFound });
+});
+
+router.get("/post", authCheck, (req, res) => {
+  return res.render("post", { user: req.user });
+});
+
+router.post("/post", authCheck, async (req, res) => {
+  let { title, content } = req.body;
+  let newPost = new Post({
+    title,
+    content,
+    author: req.user._id,
+  });
+  try {
+    await newPost.save();
+    return res.redirect("/profile");
+  } catch (e) {
+    req.flash("error_msg", "標題與內容都需要填寫");
+    return res.redirect("/profile/post");
+  }
 });
 
 module.exports = router;
