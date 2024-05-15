@@ -7,14 +7,9 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
-import sklearn
-import numpy as np
-import pandas as pd
-import scipy as sp
-import time
-import matplotlib as mpt
 import matplotlib.pyplot as plt
 import seaborn as sns
+sns.set()
 
 
 def draw_images(show=False):
