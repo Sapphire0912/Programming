@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
-import HomePage from "./HomePage";
-import About from "./About";
-import Page404 from "./Page404";
+import HomePage from "./pages/HomePage";
+import About from "./pages/About";
+import Page404 from "./pages/Page404";
+import "./styles/style.css";
 
 function App() {
   return (
