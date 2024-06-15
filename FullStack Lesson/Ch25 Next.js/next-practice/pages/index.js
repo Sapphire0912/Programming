@@ -1,11 +1,14 @@
 import Link from "next/link";
+import Layout from "../components/layout";
 
 export default function Home() {
   return (
-    <div>
-      <h1>這是網站首頁.</h1>
-      {/* <a href="/posts/edit-post">編輯 post</a> */}
-      <Link href="/posts/edit-post">編輯 post</Link>
-    </div>
+    <Layout>
+      <div>
+        <h1>這是網站首頁.</h1>
+        <Link href="/newPage">新的頁面</Link>
+        <Link href="/posts/edit-post">編輯 post</Link>
+      </div>
+    </Layout>
   );
 }
