@@ -84,4 +84,27 @@ router.patch("/:_id", async (req, res) => {
     return res.status(500).send(e);
   }
 });
+
+// 刪除課程
+router.delete("/:_id", async (req, res) => {
+  let { error } = courseValidation(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  // 確認課程是否存在
+  let { _id } = req.params;
+  try {
+    let courseFound = await Course.findOne({ _id });
+    if (!courseFound) return res.status(400).send("找不到課程，無法刪除課程");
+
+    // 使用者必須是此課程講師才能編輯課程
+    if (courseFound.instructor.equals(req.user._id)) {
+      let deleteCourse = await Course.deleteOne({ _id }).exec();
+      return res.send(deleteCourse);
+    } else {
+      return res.status(403).send("只有此課程講師才可以刪除課程");
+    }
+  } catch (e) {
+    return res.status(500).send(e);
+  }
+});
 module.exports = router;
