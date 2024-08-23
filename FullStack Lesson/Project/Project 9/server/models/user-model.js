@@ -7,7 +7,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 3,
-    maxlength: 10,
+    maxlength: 50,
   },
   email: {
     type: String,
@@ -22,10 +22,11 @@ const userSchema = new Schema({
   role: {
     type: String,
     enum: ["student", "instructor"],
+    required: true,
   },
   date: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
 });
 
@@ -34,22 +35,22 @@ userSchema.methods.isStudent = function () {
   return this.role == "student";
 };
 
-userSchema.methods.isInstructor = function () {
+userSchema.methods.isIsntructor = function () {
   return this.role == "instructor";
 };
 
-userSchema.methods.comparePassword = async function (password, callbackFn) {
+userSchema.methods.comparePassword = async function (password, cb) {
   let result;
   try {
     result = await bcrypt.compare(password, this.password);
-    return callbackFn(null, result);
-  } catch (error) {
-    return callbackFn(error, result);
+    return cb(null, result);
+  } catch (e) {
+    return cb(e, result);
   }
 };
 
 // mongoose middlewares
-// 若使用者是新用戶，或正在更改密碼，則將密碼進行雜湊處理
+// 若使用者為新用戶，或者是正在更改密碼，則將密碼進行雜湊處理
 userSchema.pre("save", async function (next) {
   // this 代表 mongoDB 內的 document
   if (this.isNew || this.isModified("password")) {

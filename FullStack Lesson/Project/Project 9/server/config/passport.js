@@ -12,12 +12,12 @@ module.exports = (passport) => {
       try {
         let foundUser = await User.findOne({ _id: jwt_payload._id }).exec();
         if (foundUser) {
-          return done(null, foundUser);
+          return done(null, foundUser); // req.user <= foundUser
         } else {
           return done(null, false);
         }
-      } catch (error) {
-        return done(error, false);
+      } catch (e) {
+        return done(e, false);
       }
     })
   );

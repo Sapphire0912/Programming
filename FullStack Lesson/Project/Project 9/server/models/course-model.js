@@ -16,7 +16,7 @@ const courseSchema = new Schema({
     required: true,
   },
   instructor: {
-    type: mongoose.Schema.Types.ObjectId, // Mongo 設定的 primary eky
+    type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
   students: {

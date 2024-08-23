@@ -1,4 +1,5 @@
 const Joi = require("joi");
+
 const registerValidation = (data) => {
   const schema = Joi.object({
     username: Joi.string().min(3).max(50).required(),
@@ -25,7 +26,6 @@ const courseValidation = (data) => {
     description: Joi.string().min(6).max(50).required(),
     price: Joi.number().min(10).max(9999).required(),
   });
-
   return schema.validate(data);
 };
 
