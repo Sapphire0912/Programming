@@ -45,7 +45,21 @@ router.post("/login", async (req, res) => {
   const foundUser = await User.findOne({ email: req.body.email });
   if (!foundUser) return res.status(401).send("無法找到使用者");
 
-  foundUser.comparePassword(req.body.password);
+  foundUser.comparePassword(req.body.password, (err, isMatch) => {
+    if (err) return res.status(500).send(err);
+    if (isMatch) {
+      // 製作 json web token
+      const tokenObject = { _id: foundUser._id, email: foundUser.email };
+      const token = jwt.sign(tokenObject, process.env.PASSPORT_SECRET);
+      return res.send({
+        msg: "成功登入",
+        token: "JWT " + token,
+        user: foundUser,
+      });
+    } else {
+      return res.status(401).send("密碼錯誤");
+    }
+  });
 });
 
 module.exports = router;

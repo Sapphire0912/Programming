@@ -34,7 +34,7 @@ userSchema.methods.isStudent = function () {
   return this.role == "student";
 };
 
-userSchema.method.isInstructor = function () {
+userSchema.methods.isInstructor = function () {
   return this.role == "instructor";
 };
 
@@ -44,7 +44,7 @@ userSchema.methods.comparePassword = async function (password, callbackFn) {
     result = await bcrypt.compare(password, this.password);
     return callbackFn(null, result);
   } catch (error) {
-    return callbackFn(e, result);
+    return callbackFn(error, result);
   }
 };
 
